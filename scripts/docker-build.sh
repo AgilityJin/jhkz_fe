@@ -1,7 +1,11 @@
 set -e
 
 # Example:
+# 第一步:构建容器内build hook: 分支或tag提交后触发
 # sh ./scripts/docker-build.sh nginx.conf 0.0.1 testing
+# 第二步:停止并删除原有镜像 hook: 镜像更新后触发
+# docker stop jhkz-fe && docker rm jhkz-fe
+# 第三步: 启动容器
 # run docker run -d -p 3100:3100 -p 3200:3200 --restart always --name=jhkz-fe registry.cn-hangzhou.aliyuncs.com/agility_jin/jhkz_fe:0.0.1
 
 docker_user=17621667884
