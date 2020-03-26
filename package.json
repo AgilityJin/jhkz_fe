@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "Agility Jin <Agility_Jin@outlook.com>",
   "license": "MIT",
+  "repository": "https://github.com/AgilityJin/jhkz_fe",
   "private": true,
   "scripts": {
     "commit": "git cz"
