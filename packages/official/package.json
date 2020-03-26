@@ -1,0 +1,45 @@
+{
+  "name": "@jhkz/official",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development && nuxt-ts",
+    "build": "cross-env NODE_ENV=production && nuxt-ts build",
+    "generate": "cross-env NODE_ENV=production && nuxt-ts generate",
+    "start": "cross-env NODE_ENV=production && nuxt-ts start",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore ."
+  },
+  "devDependencies": {
+    "@mdi/js": "^5.0.45",
+    "@nuxt/typescript-build": "^0.6.0",
+    "@nuxtjs/eslint-config-typescript": "^1.0.2",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "@nuxtjs/vuetify": "^1.11.0",
+    "@types/lodash": "^4.14.149",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-nuxt": "^0.5.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^0.4.0",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/router": "^1.5.0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/svg-sprite": "^0.4.9",
+    "cross-env": "^7.0.2",
+    "lodash": "^4.17.15",
+    "minireset.css": "^0.0.6",
+    "nuxt": "^2.11.0",
+    "vue-property-decorator": "^8.4.0"
+  }
+}

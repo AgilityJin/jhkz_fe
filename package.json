@@ -1,0 +1,34 @@
+{
+  "name": "jhkz_fe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Agility Jin <Agility_Jin@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "commit": "git cz"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@lerna/project": "^3.18.0",
+    "commitizen": "^4.0.3",
+    "cz-lerna-changelog": "^2.0.2",
+    "husky": "^4.2.3"
+  }
+}
