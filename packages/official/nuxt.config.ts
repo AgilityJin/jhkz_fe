@@ -2,7 +2,7 @@ import { Configuration } from '@nuxt/types'
 require('dotenv').config() // 使server端也可以访问
 
 const NuxtConfig: Configuration = {
-  mode: 'universal',
+  mode: 'spa',
   srcDir: 'src',
   head: {
     title: '江湖客栈',
@@ -29,11 +29,11 @@ const NuxtConfig: Configuration = {
     host: '0.0.0.0'
   },
   // SSR need active
-  // generate: {
-  //   routes: [
-  //     '/'
-  //   ]
-  // },
+  generate: {
+    routes: [
+      '/'
+    ]
+  },
   modules: [
     '@nuxtjs/style-resources',
     // Doc: https://github.com/nuxt-community/dotenv-module

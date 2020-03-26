@@ -1,6 +1,6 @@
 <template>
   <div class="demo-index display-2">
-    welcome to {{ name }}.
+    welcome to {{ name }}. monorepo
   </div>
 </template>
 
