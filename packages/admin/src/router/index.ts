@@ -8,7 +8,7 @@ const home = () => import('~/pages/index.vue').then(m => m.default || m)
 export function createRouter () {
   return new Router({
     mode: 'history',
-    base: '/admin/',
+    // base: '/admin/',
     routes: [
       {
         path: '/',
