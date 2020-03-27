@@ -35,9 +35,6 @@ const NuxtConfig: Configuration = {
       '/'
     ]
   },
-  router: {
-    base: process.env.NODE_ENV === 'production' ? '/admin/' : ''
-  },
   modules: [
     '@nuxtjs/style-resources',
     // Doc: https://github.com/nuxt-community/dotenv-module
