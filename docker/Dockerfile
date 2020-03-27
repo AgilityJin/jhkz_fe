@@ -10,8 +10,8 @@ RUN mkdir -p ${APP_DIR} \
     && chmod 777 "$APP_DIR"
 
 WORKDIR ${APP_DIR}
-ADD official/dist/jhkz-official.tar.gz official/
-ADD admin/dist/jhkz-admin.tar.gz admin/
+ADD official/jhkz-official.tar.gz official/
+ADD admin/jhkz-admin.tar.gz admin/
 
 # 更换工作目录
 WORKDIR $NGINX_CONF_DIR
