@@ -6,9 +6,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { APP_ENV } from '~/config'
 
 @Component
 export default class YourComponent extends Vue {
+  APP_ENV = APP_ENV
+
+  created () {
+  }
 }
 </script>
 

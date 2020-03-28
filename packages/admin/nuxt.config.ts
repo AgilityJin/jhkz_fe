@@ -30,7 +30,7 @@ const NuxtConfig: Configuration = {
     port: 3001
   },
   router: {
-    base: '/admin/'
+    base: process.env.NODE_ENV === "production" ? '/admin/' : undefined
   },
   // SSR need active
   generate: {
