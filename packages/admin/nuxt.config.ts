@@ -5,8 +5,8 @@ const NuxtConfig: Configuration = {
   mode: 'spa',
   srcDir: 'src',
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + '江湖客栈后台管理系统',
+    title:'江湖客栈',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,10 +24,13 @@ const NuxtConfig: Configuration = {
     '~/assets/styles/global.styl'
   ],
   plugins: [
+    '~/plugins/api.plugin.ts',
+    '~/plugins/message.plugin.ts',
+    '~/plugins/directives.plugin.ts'
   ],
   server: {
-    host: '0.0.0.0',
-    port: 3001
+    // host: '0.0.0.0',
+    port: 3200,
   },
   router: {
     base: process.env.NODE_ENV === "production" ? '/admin/' : undefined
@@ -42,7 +45,8 @@ const NuxtConfig: Configuration = {
     '@nuxtjs/style-resources',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/svg-sprite'
+    '@nuxtjs/svg-sprite',
+    '@nuxtjs/proxy'
   ],
   buildModules: [
     '@nuxt/typescript-build',
@@ -55,7 +59,18 @@ const NuxtConfig: Configuration = {
       if (config.resolve) {
         config.resolve.symlinks = false
       }
-    }
+    },
+    babel: {
+      plugins: [
+        [
+          "component",
+          {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+          }
+        ]
+      ]
+    },
   },
   // plugins config
   routerModule: {
@@ -76,7 +91,6 @@ const NuxtConfig: Configuration = {
   },
   eslint: {
     fix: true,
-    formatter: 'table'
   },
   typescript: {
     typeCheck: {
@@ -85,7 +99,16 @@ const NuxtConfig: Configuration = {
   },
   svgSprite: {
     input: '~/assets/svg/'
-  }
+  },
+  // https://github.com/chimurai/http-proxy-middleware#options
+  proxy: {
+    '/api': {
+      target: 'http://localhost:8080',
+      pathRewrite: {
+        '^/api': '/' // 需要rewrite的, 路径重写
+      }
+    }
+  },
 }
 
 export default NuxtConfig
