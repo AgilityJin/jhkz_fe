@@ -57,7 +57,7 @@ import { mapMutations } from 'vuex'
 import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant } from '@mdi/js'
 import { asyncTask } from '@helper-gdp/utils'
 import { APP_ENV } from '~/config'
-import { isRequired, refValidate } from '~/utils/validate'
+import { required, refValidate } from '~/utils/validate'
 
 @Component({
   layout: 'empty',
@@ -84,18 +84,17 @@ export default class Login extends Vue {
 
   rules = {
     account: [
-      (v: string) => isRequired(v, '请提供登录账户')
+      required('请提供登录账户')
     ],
     password: [
-      (v: string) => isRequired(v, '请提供登录密码')
+      required('请提供登录密码')
     ],
     captcha: [
-      (v: string) => isRequired(v, '请提供验证码')
+      required('请提供验证码')
     ]
   }
 
   created () {
-    console.log(this.UPDATE_USER_INFO)
     this.getCaptcha()
   }
 

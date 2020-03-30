@@ -1215,6 +1215,7 @@
 "@nuxtjs/vuetify@^1.11.0":
   version "1.11.0"
   resolved "http://r.cnpmjs.org/@nuxtjs/vuetify/download/@nuxtjs/vuetify-1.11.0.tgz#de8bc9e737479e6c167c2ff45122811362fee7b1"
+  integrity sha1-3ovJ5zdHnmwWfC/0USKBE2L+57E=
   dependencies:
     deepmerge "^4.2.2"
     fibers "^4.0.2"

@@ -11,11 +11,18 @@ export const routes: RouteConfig[] = [
   {
     path: '/login',
     name: 'login',
-    component: login
+    component: login,
+    meta: {
+      hidden: true
+    }
   },
   {
     path: '/home',
     name: 'home',
-    component: home
+    component: home,
+    meta: {
+      name: '设置',
+      auth: 'setting'
+    }
   }
 ]

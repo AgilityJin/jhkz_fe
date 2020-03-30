@@ -3,3 +3,5 @@ export const APP_ENV = {
   isProd: process.env.ENV === 'prod',
   apiHost: '/api'
 }
+
+export const CONTEXT_KEY = 'USER_CONTEXT'
