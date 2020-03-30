@@ -53,11 +53,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mapMutations } from 'vuex'
 import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant } from '@mdi/js'
 import { asyncTask } from '@helper-gdp/utils'
 import { APP_ENV } from '~/config'
 import { required, refValidate } from '~/utils/validate'
+import { Mutation } from 'vuex-class'
 
 @Component({
   layout: 'empty',
@@ -98,7 +98,8 @@ export default class Login extends Vue {
     this.getCaptcha()
   }
 
-  UPDATE_USER_INFO = mapMutations('context', ['UPDATE_USER_INFO']).UPDATE_USER_INFO
+  @Mutation('UPDATE_USER_INFO', { namespace: 'context' })
+  UPDATE_USER_INFO: Function
 
   async submit () {
     const validate = refValidate(this.$refs, 'login')

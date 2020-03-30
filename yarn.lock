@@ -1215,7 +1215,6 @@
 "@nuxtjs/vuetify@^1.11.0":
   version "1.11.0"
   resolved "http://r.cnpmjs.org/@nuxtjs/vuetify/download/@nuxtjs/vuetify-1.11.0.tgz#de8bc9e737479e6c167c2ff45122811362fee7b1"
-  integrity sha1-3ovJ5zdHnmwWfC/0USKBE2L+57E=
   dependencies:
     deepmerge "^4.2.2"
     fibers "^4.0.2"
@@ -2055,7 +2054,7 @@ babel-code-frame@^6.22.0:
 
 babel-eslint@^10.1.0:
   version "10.1.0"
-  resolved "http://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
+  resolved "https://registry.npmjs.org/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.7.0"
@@ -8586,6 +8585,10 @@ vuetify-loader@^1.4.3:
 vuetify@^2.2.12:
   version "2.2.15"
   resolved "http://r.cnpmjs.org/vuetify/download/vuetify-2.2.15.tgz#03466acb6b9afcba056abef3a6278d396cae18ff"
+
+vuex-class@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/vuex-class/-/vuex-class-0.3.2.tgz#c7e96a076c1682137d4d23a8dcfdc63f220e17a8"
 
 vuex@^3.1.2:
   version "3.1.2"

@@ -4,7 +4,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": [
-      "esnext",
+      "ESNEXT",
+      "ES2019",
+      "ES2018",
+      "ES2017",
+      "ES2016",
+      "ES2015",
       "esnext.asynciterable",
       "dom"
     ],
@@ -18,6 +23,7 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "strictPropertyInitialization": false,
     "baseUrl": "src",
     "paths": {
       "~/*": [
@@ -31,7 +37,7 @@
       "@types/node",
       "@nuxt/types",
       "@nuxtjs/vuetify",
-      "@types/lodash"
+      "@types/lodash",
     ]
   },
   "include": [
@@ -39,6 +45,7 @@
   ],
   "exclude": [
     "node_modules",
+    "../../node_modules/",
     ".nuxt",
     "dist"
   ]
