@@ -4,3 +4,5 @@ export const refValidate = (refs: any, refName: string): boolean => {
 }
 
 export const isRequired = (value: any, errorMsg = 'value is required') => !!value || errorMsg
+
+// export

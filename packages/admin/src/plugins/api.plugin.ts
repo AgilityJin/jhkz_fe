@@ -1,9 +1,9 @@
 import { Plugin } from '@nuxt/types'
-import { Msg } from './message.plugin'
+import { AxiosError } from 'axios'
 import { Request } from '@helper-gdp/utils'
+import { Msg } from './message.plugin'
 import { APP_ENV } from '~/config'
 import * as Svc from '~/service'
-import { AxiosError } from 'axios'
 
 export const Api = new Request({
   config: {

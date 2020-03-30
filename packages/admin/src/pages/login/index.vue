@@ -53,10 +53,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { mapMutations } from 'vuex'
 import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant } from '@mdi/js'
+import { asyncTask } from '@helper-gdp/utils'
 import { APP_ENV } from '~/config'
 import { isRequired, refValidate } from '~/utils/validate'
-import { asyncTask } from '@helper-gdp/utils'
 
 @Component({
   layout: 'empty',
@@ -76,8 +77,8 @@ export default class Login extends Vue {
   captcha = null
 
   form = {
-    account: '', // admin
-    password: '', // xc9cAocBNLb9sETztThEBm
+    account: 'admin', // admin
+    password: 'xc9cAocBNLb9sETztThEBm', // xc9cAocBNLb9sETztThEBm
     captcha: ''
   }
 
@@ -94,18 +95,22 @@ export default class Login extends Vue {
   }
 
   created () {
+    console.log(this.UPDATE_USER_INFO)
     this.getCaptcha()
   }
+
+  UPDATE_USER_INFO = mapMutations('context', ['UPDATE_USER_INFO']).UPDATE_USER_INFO
 
   async submit () {
     const validate = refValidate(this.$refs, 'login')
     if (!validate) { return }
     this.submitStatus = true
-    const [err] = await asyncTask(this.$api.login(this.form))
+    const [err, userInfo] = await asyncTask(this.$api.login(this.form))
     this.submitStatus = false
     if (err) { return }
     this.$msg.globalSuccess('登录成功')
     const self = this
+    this.UPDATE_USER_INFO(userInfo)
     setTimeout(() => {
       self.$router.push({
         name: 'home'
