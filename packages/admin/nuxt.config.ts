@@ -6,7 +6,7 @@ const NuxtConfig: Configuration = {
   srcDir: 'src',
   head: {
     titleTemplate: '%s - ' + '江湖客栈后台管理系统',
-    title:'江湖客栈',
+    title: '江湖客栈',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -30,10 +30,10 @@ const NuxtConfig: Configuration = {
   ],
   server: {
     // host: '0.0.0.0',
-    port: 3200,
+    port: 3200
   },
   router: {
-    base: process.env.NODE_ENV === "production" ? '/admin/' : undefined
+    base: process.env.NODE_ENV === 'production' ? '/admin/' : undefined
   },
   // SSR need active
   generate: {
@@ -55,7 +55,7 @@ const NuxtConfig: Configuration = {
     '@nuxtjs/vuetify'
   ],
   build: {
-    extend(config) {
+    extend (config) {
       if (config.resolve) {
         config.resolve.symlinks = false
       }
@@ -63,14 +63,14 @@ const NuxtConfig: Configuration = {
     babel: {
       plugins: [
         [
-          "component",
+          'component',
           {
-            "libraryName": "element-ui",
-            "styleLibraryName": "theme-chalk"
+            libraryName: 'element-ui',
+            styleLibraryName: 'theme-chalk'
           }
         ]
       ]
-    },
+    }
   },
   // plugins config
   routerModule: {
@@ -90,7 +90,7 @@ const NuxtConfig: Configuration = {
     filename: `${process.env.NODE_ENV}.env`
   },
   eslint: {
-    fix: true,
+    fix: true
   },
   typescript: {
     typeCheck: {
@@ -108,7 +108,7 @@ const NuxtConfig: Configuration = {
         '^/api': '/' // 需要rewrite的, 路径重写
       }
     }
-  },
+  }
 }
 
 export default NuxtConfig

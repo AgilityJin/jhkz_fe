@@ -6,7 +6,7 @@ export default function ({ app }) {
     icons: {
       iconfont: 'mdiSvg'
     },
-    lang: {},
+    lang: {}
     // rtl: true,
     // theme: {
     //   dark: false,

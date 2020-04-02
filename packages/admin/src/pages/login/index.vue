@@ -55,9 +55,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant } from '@mdi/js'
 import { asyncTask } from '@helper-gdp/utils'
+import { Mutation } from 'vuex-class'
 import { APP_ENV } from '~/config'
 import { required, refValidate } from '~/utils/validate'
-import { Mutation } from 'vuex-class'
 
 @Component({
   layout: 'empty',
