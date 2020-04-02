@@ -2055,7 +2055,6 @@ babel-code-frame@^6.22.0:
 babel-eslint@^10.1.0:
   version "10.1.0"
   resolved "http://120.55.82.162:8081/repository/linkedcare-npm/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
-  integrity sha1-aWjlaKkQt4+zd5zdi2rC9HmUMjI=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.7.0"
@@ -3213,6 +3212,10 @@ dargs@^4.0.1:
   resolved "http://r.cnpmjs.org/dargs/download/dargs-4.1.0.tgz#03a9dbb4b5c2f139bf14ae53f0b8a2a6a86f4e17"
   dependencies:
     number-is-nan "^1.0.0"
+
+date-fns@^2.11.1:
+  version "2.11.1"
+  resolved "https://registry.npmjs.org/date-fns/-/date-fns-2.11.1.tgz#197b8be1bbf5c5e6fe8bea817f0fe111820e7a12"
 
 de-indent@^1.0.2:
   version "1.0.2"

@@ -26,7 +26,8 @@ const NuxtConfig: Configuration = {
   plugins: [
     '~/plugins/api.plugin.ts',
     '~/plugins/message.plugin.ts',
-    '~/plugins/directives.plugin.ts'
+    '~/plugins/directives.plugin.ts',
+    '~/plugins/filters.plugin.ts'
   ],
   server: {
     // host: '0.0.0.0',

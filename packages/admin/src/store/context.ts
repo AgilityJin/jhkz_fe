@@ -23,7 +23,6 @@ export const mutations: MutationTree<RootState> = {
     localStorage.setItem(CONTEXT_KEY, JSON.stringify(userInfo))
   },
   UPDATE_DRAWER_SHOW: (state, isShow: boolean) => {
-    console.log('object', isShow)
     state.isDrawerShow = isShow
   }
 }

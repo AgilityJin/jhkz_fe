@@ -54,6 +54,7 @@
     "babel-plugin-component": "^1.1.1",
     "cross-env": "^7.0.2",
     "crypto-js": "^4.0.0",
+    "date-fns": "^2.11.1",
     "element-ui": "^2.13.0",
     "lodash": "^4.17.15",
     "minireset.css": "^0.0.6",

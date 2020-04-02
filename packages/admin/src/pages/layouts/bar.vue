@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app>
-    <v-app-bar-nav-icon @click="taggleDrawer" />
-    <v-toolbar-title>Page title</v-toolbar-title>
+    <v-app-bar-nav-icon />
+    <v-toolbar-title>{{ currentTime | formatDate }}</v-toolbar-title>
     <v-spacer />
     <v-menu bottom>
       <template v-slot:activator="{ on }">
@@ -26,28 +26,26 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import Vue from 'vue'
 import { mdiAccount } from '@mdi/js'
-import { Getter, Mutation } from 'vuex-class'
 
-@Component({
-  name: 'app-bar'
-})
-export default class AppBar extends Vue {
-  mdiAccount = mdiAccount
-
-  @Mutation('UPDATE_DRAWER_SHOW', { namespace: 'context' })
-  UPDATE_DRAWER_SHOW: Function
-
-  @Getter('isDrawerShow', { namespace: 'context' })
-  isDrawerShow: boolean
-
-  taggleDrawer = () => {
-    // FIXME: 此处getter始终没能拿到
-    console.log(this.isDrawerShow)
-    this.UPDATE_DRAWER_SHOW(!this.isDrawerShow)
+export default Vue.extend({
+  name: 'AppBar',
+  data () {
+    return {
+      currentTime: null,
+      mdiAccount
+    }
+  },
+  created () {
+    const self = this
+    const updateCurrentTime = function () {
+      self.currentTime = new Date()
+      setTimeout(updateCurrentTime, 1000)
+    }
+    updateCurrentTime()
   }
-}
+})
 </script>
 
 <style lang="stylus" scoped>
