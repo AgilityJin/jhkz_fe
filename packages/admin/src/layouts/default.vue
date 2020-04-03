@@ -16,6 +16,7 @@ import AppAside from '~/pages/layouts/aside.vue'
 import AppBar from '~/pages/layouts/bar.vue'
 
 @Component({
+  middleware: ['auth'],
   components: {
     AppAside,
     AppBar

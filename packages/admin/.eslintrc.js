@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     "ecmaFeatures": {
       legacyDecorators: true
     }
@@ -17,7 +17,8 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript',
   ],
   plugins: [
-    'vue'
+    'vue',
+    '@typescript-eslint'
   ],
   // 可参考eslint-config.md
   rules: {

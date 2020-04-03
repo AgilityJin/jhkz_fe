@@ -4,7 +4,7 @@
       <h1 class="jhkz-login__title white--text">
         江湖客栈后台管理系统{{ VERSION }}
       </h1>
-      <v-form ref="login" :model="formValid">
+      <v-form ref="login" :model="formValid" @keyup.enter.native="submit">
         <v-text-field
           v-model="form.account"
           :prepend-inner-icon="mdiAccount"
@@ -61,6 +61,7 @@ import { required, refValidate } from '~/utils/validate'
 
 @Component({
   layout: 'empty',
+  middleware: ['not-need-login'],
   head () {
     return {
       title: '登录'
@@ -77,8 +78,8 @@ export default class Login extends Vue {
   captcha = null
 
   form = {
-    account: 'admin', // admin
-    password: 'xc9cAocBNLb9sETztThEBm', // xc9cAocBNLb9sETztThEBm
+    account: '', // admin
+    password: '', // xc9cAocBNLb9sETztThEBm
     captcha: ''
   }
 
@@ -115,7 +116,7 @@ export default class Login extends Vue {
       self.$router.push({
         name: 'home'
       })
-    }, 1500)
+    }, 1000)
   }
 
   async getCaptcha () {

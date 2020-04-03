@@ -1,35 +1,27 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { CONTEXT_KEY } from '~/config'
+import { setStorage, clearStorage } from '~/utils'
 
 const stateObj = {
-  userInfo: null,
-  isDrawerShow: true
+  userInfo: null
 }
 export const state = () => (stateObj)
 type RootState = typeof stateObj
 
 export const getters: GetterTree<RootState, RootState> = {
-  userInfo: (state) => {
-    if (state.userInfo) { return state.userInfo }
-    const userInfo = localStorage.getItem(CONTEXT_KEY)
-    return userInfo ? JSON.parse(userInfo) : {}
-  },
-  isDrawerShow: state => state.isDrawerShow
+  userInfo: state => state.userInfo
 }
 
 export const mutations: MutationTree<RootState> = {
   UPDATE_USER_INFO: (state, userInfo) => {
     state.userInfo = userInfo
-    localStorage.setItem(CONTEXT_KEY, JSON.stringify(userInfo))
-  },
-  UPDATE_DRAWER_SHOW: (state, isShow: boolean) => {
-    state.isDrawerShow = isShow
+    setStorage(CONTEXT_KEY, userInfo)
   }
 }
 
 export const actions: ActionTree<RootState, RootState> = {
   clearUserInfo ({ commit }) {
     commit('UPDATE_USER_INFO', null)
-    localStorage.removeItem(CONTEXT_KEY)
+    clearStorage(CONTEXT_KEY)
   }
 }

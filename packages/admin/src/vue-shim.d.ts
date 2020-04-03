@@ -3,7 +3,6 @@ import { Api } from '~/plugins/api.plugin'
 import { Msg } from '~/plugins/message.plugin'
 
 declare module "*.vue" {
-  // @ts-ignore
   import Vue from 'vue'
   export default Vue
 }

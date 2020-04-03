@@ -21,6 +21,7 @@ const NuxtConfig: Configuration = {
   loading: { color: '#fff' },
   css: [
     'minireset.css',
+    '~/assets/styles/normalize.styl',
     '~/assets/styles/global.styl'
   ],
   plugins: [
