@@ -10,3 +10,11 @@ export const setStorage = (key: string, data: any, isNeedStringify = true) => {
 }
 
 export const clearStorage = (key: string) => localStorage.removeItem(key)
+
+export const totalPage = (totalCount: number, pagesize: number) => {
+  if (totalCount % pagesize === 0) {
+    return parseInt(String(totalCount / pagesize), 10)
+  } else {
+    return parseInt(String(totalCount / pagesize + 1), 10)
+  }
+}

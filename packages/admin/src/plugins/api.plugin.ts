@@ -2,8 +2,9 @@ import { Plugin } from '@nuxt/types'
 import { AxiosError } from 'axios'
 import { Request } from '@helper-gdp/utils'
 import { Msg } from './message.plugin'
-import { APP_ENV } from '~/config'
+import { APP_ENV, CONTEXT_KEY } from '~/config'
 import * as Svc from '~/service'
+import { getStorage } from '~/utils'
 
 export const Api = new Request({
   config: {
@@ -18,6 +19,15 @@ export const Api = new Request({
     const errMsg = (resp.data && resp.data.message) || '操作失败'
     Msg.warning(errMsg)
     throw new Error(errMsg)
+  },
+  token: {
+    getToken: () => {
+      const userInfo = getStorage(CONTEXT_KEY)
+      if (userInfo && userInfo.token) {
+        return `bearer ${userInfo.token}`
+      }
+      return ''
+    }
   },
   // 请求异常
   responseErrorInterceptor: (err) => {

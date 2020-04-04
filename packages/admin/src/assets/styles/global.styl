@@ -1,19 +1,19 @@
-// 加深颜色
-darken-color($color, $darken = 10%) {
-  darken($color, $darken)
-};
++block(table__default) {
+  table, th, td {
+    border: thin solid rgba(0, 0, 0, 0.12)
+  }
+  .v-data-table-header {
+    background: #f5f5f5
+  }
+  .v-data-table__empty-wrapper {
+    td {
+      text-align: center
+    }
+  }
+}
 
-// 提亮
-lighten-color($color, $darken = 10%) {
-  lighten($color, $darken)
-};
-
-// 饱和度增加
-saturate-color($color, $darken = 10%) {
-  saturate($color, $darken)
-};
-
-// 饱和度降低
-desaturate-color($color, $darken = 10%) {
-  saturate($color, $darken)
-};
++block(actions) {
+  +element(nav) {
+    line-height: 50px
+  }
+}

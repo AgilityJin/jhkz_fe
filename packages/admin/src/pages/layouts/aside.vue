@@ -19,14 +19,20 @@
     <v-list dense nav>
       <template v-for="item in routersNav">
         <!-- 多级路由 -->
-        <v-list-group v-if="item.children && item.children.length && isShowNav(item.key)" :key="item.key" :group="item.key" :prepend-icon="item.icon" no-action>
+        <v-list-group
+          v-if="item.children && item.children.length && isShowNav(item.auth)"
+          :key="item.key"
+          :group="item.key"
+          no-action
+          :prepend-icon="item.icon"
+        >
           <template #activator>
             <v-list-item-content>
               {{ item.name }}
             </v-list-item-content>
           </template>
           <div v-for="el in item.children" :key="el.key">
-            <v-list-item v-if="isShowNav(el.key)" link :to="{ name: el.key }">
+            <v-list-item v-if="isShowNav(el.auth)" link :to="{ name: el.key }">
               <v-list-item-icon>
                 <v-icon>{{ el.icon }}</v-icon>
               </v-list-item-icon>
@@ -38,7 +44,7 @@
         </v-list-group>
 
         <!-- 单级路由 -->
-        <v-list-item v-else-if="isShowNav(item.key)" :key="item.key" link :to="{ name: item.key }">
+        <v-list-item v-else-if="isShowNav(item.auth)" :key="item.key" link :to="{ name: item.key }">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>

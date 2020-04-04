@@ -1,9 +1,9 @@
 import { IApiContextType } from '@helper-gdp/utils'
+import Vue from 'vue'
 import { Api } from '~/plugins/api.plugin'
 import { Msg } from '~/plugins/message.plugin'
 
-declare module "*.vue" {
-  import Vue from 'vue'
+declare module '*.vue' {
   export default Vue
 }
 
@@ -14,6 +14,14 @@ declare module 'vue/types/vue' {
   interface Vue {
     $api: typeof Api & IApiContextType,
     $msg: typeof Msg,
+    options: {
+      name: string
+    }
+  }
+  interface VueConstructor {
+    options: {
+      name: string
+    }
   }
 }
 

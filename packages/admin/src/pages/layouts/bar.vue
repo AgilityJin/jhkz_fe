@@ -30,7 +30,7 @@
           <v-btn text @click="logoutDialog = false">
             取消
           </v-btn>
-          <v-btn color="primary" text @click="logout">
+          <v-btn color="blue darken-1" text @click="logout">
             确认
           </v-btn>
         </v-card-actions>

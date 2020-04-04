@@ -14,3 +14,23 @@ $warning-color := '#FFC107'
 $error-color := '#f44336'
 
 $theme-color := '#4395ff'
+
+// 加深颜色
+darken-color($color, $darken = 10%) {
+  darken($color, $darken)
+};
+
+// 提亮
+lighten-color($color, $darken = 10%) {
+  lighten($color, $darken)
+};
+
+// 饱和度增加
+saturate-color($color, $darken = 10%) {
+  saturate($color, $darken)
+};
+
+// 饱和度降低
+desaturate-color($color, $darken = 10%) {
+  saturate($color, $darken)
+};
