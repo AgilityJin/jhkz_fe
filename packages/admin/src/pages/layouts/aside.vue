@@ -114,6 +114,7 @@ export default class AppAside extends Vue {
 
   isShowNav (authStr: string) {
     if (!authStr) { return true }
+    if (!this.userInfo || !this.userInfo.auths) { return false }
     return this.userInfo.auths.includes(authStr)
   }
 }

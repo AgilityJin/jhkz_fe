@@ -1,6 +1,6 @@
 <template>
   <div class="demo-index">
-    江湖客栈后台管理系统 monorepo
+    <h1>江湖客栈后台管理系统</h1>
   </div>
 </template>
 

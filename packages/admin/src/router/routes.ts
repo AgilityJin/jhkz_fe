@@ -1,5 +1,5 @@
 import { RouteConfig } from 'vue-router'
-import { mdiCogs, mdiOrderBoolDescending, mdiAccountGroup, mdiCogTransfer, mdiHomeAnalytics } from '@mdi/js'
+import { mdiCogs, mdiOrderBoolDescending, mdiAccountGroup, mdiCogTransfer, mdiHomeAnalytics, mdiAccountCog } from '@mdi/js'
 
 const main = () => import('~/pages/layouts/main.vue').then(m => m.default || m)
 const home = () => import('~/pages/home/index.vue').then(m => m.default || m)
@@ -7,6 +7,7 @@ const login = () => import('~/pages/login/index.vue').then(m => m.default || m)
 const order = () => import('~/pages/order/index.vue').then(m => m.default || m)
 const systemSetting = () => import('~/pages/setting/system/index.vue').then(m => m.default || m)
 const rolesSetting = () => import('~/pages/setting/roles/index.vue').then(m => m.default || m)
+const accountSetting = () => import('~/pages/setting/account/index.vue').then(m => m.default || m)
 
 export const routes: RouteConfig[] = [
   {
@@ -35,7 +36,7 @@ export const routes: RouteConfig[] = [
     name: 'order',
     component: order,
     meta: {
-      name: '订单',
+      name: '订单管理',
       auth: 'order',
       icon: mdiOrderBoolDescending
     }
@@ -57,6 +58,15 @@ export const routes: RouteConfig[] = [
         name: '角色管理',
         auth: 'setting-roles',
         icon: mdiAccountGroup
+      }
+    }, {
+      path: 'users',
+      name: 'usersSetting',
+      component: accountSetting,
+      meta: {
+        name: '用户管理',
+        auth: 'setting-users',
+        icon: mdiAccountCog
       }
     }, {
       path: 'system',
