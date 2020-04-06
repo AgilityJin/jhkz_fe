@@ -7,7 +7,7 @@ const login = () => import('~/pages/login/index.vue').then(m => m.default || m)
 const order = () => import('~/pages/order/index.vue').then(m => m.default || m)
 const systemSetting = () => import('~/pages/setting/system/index.vue').then(m => m.default || m)
 const rolesSetting = () => import('~/pages/setting/roles/index.vue').then(m => m.default || m)
-const accountSetting = () => import('~/pages/setting/account/index.vue').then(m => m.default || m)
+const usersSetting = () => import('~/pages/setting/users/index.vue').then(m => m.default || m)
 
 export const routes: RouteConfig[] = [
   {
@@ -62,7 +62,7 @@ export const routes: RouteConfig[] = [
     }, {
       path: 'users',
       name: 'usersSetting',
-      component: accountSetting,
+      component: usersSetting,
       meta: {
         name: '用户管理',
         auth: 'setting-users',

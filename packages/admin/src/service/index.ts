@@ -42,3 +42,18 @@ export const getUsers = {
   url: '/users',
   method: 'get'
 }
+
+export const updateUser = {
+  url: '/users',
+  method: 'put'
+}
+
+export const createUser = {
+  url: '/users',
+  method: 'post'
+}
+
+export const deleteUser = {
+  url: '/users',
+  method: 'delete'
+}

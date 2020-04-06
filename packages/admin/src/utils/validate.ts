@@ -1,3 +1,5 @@
+import { phoneNumReg } from './regular'
+
 export const refReset = (refs: any, refName: string) => {
   const ref: any = refs[refName]
   if (ref) {
@@ -24,4 +26,9 @@ export const maxLength = (limitLength: number, errorMsg = '') => (value: string)
 export const minLength = (limitLength: number, errorMsg = '') => (value: string) => {
   if (!value) { return true }
   return (value.length >= limitLength) || errorMsg
+}
+
+export const isPhone = (errorMsg = '') => (value: string) => {
+  if (!value) { return true }
+  return (phoneNumReg.test(value)) || errorMsg
 }
