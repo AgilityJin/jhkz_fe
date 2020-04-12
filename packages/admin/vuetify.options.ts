@@ -1,6 +1,6 @@
 // import colors from 'vuetify/es5/util/colors'
 
-export default function ({ app }) {
+export default function ({ _ }) {
   return {
     breakpoint: {},
     icons: {

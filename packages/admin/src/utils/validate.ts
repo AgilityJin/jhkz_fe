@@ -28,6 +28,11 @@ export const minLength = (limitLength: number, errorMsg = '') => (value: string)
   return (value.length >= limitLength) || errorMsg
 }
 
+export const length = (length: number, errorMsg = '') => (value: string) => {
+  if (!value) { return true }
+  return (value.length === length) || errorMsg
+}
+
 export const isPhone = (errorMsg = '') => (value: string) => {
   if (!value) { return true }
   return (phoneNumReg.test(value)) || errorMsg

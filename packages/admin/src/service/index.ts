@@ -57,3 +57,23 @@ export const deleteUser = {
   url: '/users',
   method: 'delete'
 }
+
+export const getOrders = {
+  url: '/order',
+  method: 'get'
+}
+
+export const createOrder = {
+  url: '/order',
+  method: 'post'
+}
+
+export const updateOrder = {
+  url: '/order',
+  method: 'put'
+}
+
+export const removeOrder = {
+  url: '/order',
+  method: 'delete'
+}
