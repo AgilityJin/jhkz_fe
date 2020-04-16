@@ -11,6 +11,11 @@ export const Api = new Request({
     baseURL: APP_ENV.apiHost
   },
   requestList: Svc,
+  requestInterceptor: (config) => {
+    const userInfo = getStorage(CONTEXT_KEY)
+    config.headers.merchantId = userInfo && userInfo.merchantId
+    return config
+  },
   // 业务异常
   responseInterceptor: (resp) => {
     if (resp.data && resp.data.statusCode === 200) {

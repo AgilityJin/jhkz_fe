@@ -6,13 +6,23 @@
       </h1>
       <v-form ref="login" :model="formValid" @keyup.enter.native="submit">
         <v-text-field
+          v-model="form.merchantCode"
+          :prepend-inner-icon="mdiDomain"
+          clearable
+          dense
+          :rules="rules.merchantCode"
+          background-color="#fff"
+          autofocus
+          outlined
+          label="商户码"
+        />
+        <v-text-field
           v-model="form.account"
           :prepend-inner-icon="mdiAccount"
           clearable
           dense
           :rules="rules.account"
           background-color="#fff"
-          autofocus
           outlined
           label="账户"
         />
@@ -53,7 +63,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant } from '@mdi/js'
+import { mdiAccount, mdiOnepassword, mdiAlphabeticalVariant, mdiDomain } from '@mdi/js'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
 import { APP_ENV } from '~/config'
@@ -74,16 +84,21 @@ export default class Login extends Vue {
   mdiAccount = mdiAccount
   mdiOnepassword = mdiOnepassword
   mdiAlphabeticalVariant = mdiAlphabeticalVariant
+  mdiDomain = mdiDomain
   VERSION = APP_ENV.version
   captcha = null
 
   form = {
     account: '', // admin
     password: '', // xc9cAocBNLb9sETztThEBm
-    captcha: ''
+    captcha: '',
+    merchantCode: ''
   }
 
   rules = {
+    merchantCode: [
+      required('请提供所属商户码')
+    ],
     account: [
       required('请提供登录账户')
     ],
