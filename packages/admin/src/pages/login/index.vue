@@ -172,7 +172,7 @@ export default class Login extends Vue {
     background-size cover
   }
   +element(title) {
-    margin 60px 0 20px
+    margin 40px 0 10px
     text-align center
     font-size $cn-max-font-size
   }

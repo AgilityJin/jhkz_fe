@@ -48,6 +48,11 @@ export const updateUser = {
   method: 'put'
 }
 
+export const updateUserPassword = {
+  url: '/users/password',
+  method: 'put'
+}
+
 export const createUser = {
   url: '/users',
   method: 'post'
