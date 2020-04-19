@@ -1,5 +1,5 @@
 import { RouteConfig } from 'vue-router'
-import { mdiCogs, mdiOrderBoolDescending, mdiAccountGroup, mdiCogTransfer, mdiHomeAnalytics, mdiAccountCog } from '@mdi/js'
+import { mdiCogs, mdiOrderBoolDescending, mdiAccountGroup, mdiCogTransfer, mdiHomeAnalytics, mdiAccountCog, mdiHandshake } from '@mdi/js'
 
 const main = () => import('~/pages/layouts/main.vue').then(m => m.default || m)
 const home = () => import('~/pages/home/index.vue').then(m => m.default || m)
@@ -8,6 +8,7 @@ const order = () => import('~/pages/order/index.vue').then(m => m.default || m)
 const systemSetting = () => import('~/pages/setting/system/index.vue').then(m => m.default || m)
 const rolesSetting = () => import('~/pages/setting/roles/index.vue').then(m => m.default || m)
 const usersSetting = () => import('~/pages/setting/users/index.vue').then(m => m.default || m)
+const booster = () => import('~/pages/booster/index.vue').then(m => m.default || m)
 
 export const routes: RouteConfig[] = [
   {
@@ -39,6 +40,16 @@ export const routes: RouteConfig[] = [
       name: '订单管理',
       auth: 'order',
       icon: mdiOrderBoolDescending
+    }
+  },
+  {
+    path: '/booster',
+    name: 'booster',
+    component: booster,
+    meta: {
+      name: '代练管理',
+      icon: mdiHandshake,
+      hidden: true
     }
   },
   {

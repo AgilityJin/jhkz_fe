@@ -82,3 +82,8 @@ export const removeOrder = {
   url: '/order',
   method: 'delete'
 }
+
+export const uploadImage = {
+  url: '/open/image',
+  method: 'post'
+}

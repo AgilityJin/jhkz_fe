@@ -13,4 +13,4 @@ export const PASSWORD_MIN_LENGTH = 6 // 最小密码长度
 
 export const NAME_MAX_LENGTH = 24 // 名称长度
 
-export const ORDER_LENGTH = 21 // 订单号长度
+export const ORDER_LENGTH = 18 // 订单号长度

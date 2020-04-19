@@ -1,5 +1,5 @@
 export const APP_ENV = {
-  version: '1.1.0',
+  version: '1.2.0',
   isProd: process.env.ENV === 'prod',
   apiHost: '/api/v1'
 }

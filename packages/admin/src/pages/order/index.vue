@@ -128,6 +128,11 @@
       no-data-text="没有更多数据了"
       hide-default-footer
     >
+      <template v-slot:item.images="{ item }">
+        <v-icon small @click="openScreenshotManagerPanel(item)">
+          {{ mdiFolderMultipleImage }}
+        </v-icon>
+      </template>
       <template v-slot:item.actions="{ item }">
         <v-icon
           small
@@ -287,6 +292,7 @@
     </v-dialog>
 
     <jhkz-confirm v-model="confirmPanel" :loading="confirmLoading" :message="confirmMsg" @confirm="confirm" @close="closeConfirm" />
+    <screenshot-manager v-model="screenshotManagerPanel" :order-id="screenshotManagerOrderId" />
   </div>
 </template>
 
@@ -294,18 +300,20 @@
 import { refValidate, refReset, isPhone, length, required } from '../../utils/validate'
 import { ORDER_LENGTH } from '../../config/limit-length'
 import { Vue, Component } from 'vue-property-decorator'
-import { mdiCalendarRange } from '@mdi/js'
+import { mdiCalendarRange, mdiFolderMultipleImage } from '@mdi/js'
 import { Pagination, Confirm } from '~/components'
 import debounce from 'lodash/debounce'
 import { asyncTask } from '@helper-gdp/utils'
 import { SYNOPSIS_MAX_LENGTH } from '~/config/limit-length'
 import { format, parseISO } from 'date-fns'
 import { ORDER_STATUS_MAP, ORDER_STATUS } from '~/config/constants'
+import ScreenshotManager from '~/components/screenshot-manager/index.vue'
 
 @Component({
   components: {
     [Pagination.options.name]: Pagination,
-    [Confirm.options.name]: Confirm
+    [Confirm.options.name]: Confirm,
+    [ScreenshotManager.options.name]: ScreenshotManager
   }
 })
 export default class OrderPage extends Vue {
@@ -313,6 +321,8 @@ export default class OrderPage extends Vue {
   startTimeMenu = false
   endTimeMenu = false
   tableLoading = false
+  screenshotManagerPanel = false
+  screenshotManagerOrderId = ''
   tableData = []
   confirmPanel = false
   confirmLoading = false
@@ -368,6 +378,11 @@ export default class OrderPage extends Vue {
     align: 'center',
     sortable: false
   }, {
+    text: '代练截图',
+    value: 'images',
+    align: 'center',
+    sortable: false
+  }, {
     text: '操作',
     value: 'actions',
     align: 'center',
@@ -375,6 +390,7 @@ export default class OrderPage extends Vue {
   }]
 
   // icon
+  mdiFolderMultipleImage = mdiFolderMultipleImage
   mdiCalendarRange = mdiCalendarRange
 
   queryForm = {
@@ -420,7 +436,7 @@ export default class OrderPage extends Vue {
 
   rules = {
     orderId: [
-      length(ORDER_LENGTH, '请提供正确的21位订单号')
+      length(ORDER_LENGTH, `请提供正确的${ORDER_LENGTH}位订单号`)
     ],
     phone: [
       isPhone('请填写正确的手机号')
@@ -436,6 +452,11 @@ export default class OrderPage extends Vue {
 
   created () {
     this.getOrders()
+  }
+
+  openScreenshotManagerPanel ({ orderId }: any) {
+    this.screenshotManagerOrderId = orderId
+    this.screenshotManagerPanel = true
   }
 
   openConfirm (type: 'delete', item: any) {
