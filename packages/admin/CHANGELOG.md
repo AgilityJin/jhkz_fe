@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.1...@jhkz/admin@1.2.2) (2020-04-20)
+
+
+### Bug Fixes
+
+* **preview:** 修复宽高限制不正确的问题 ([01d412d](https://github.com/AgilityJin/jhkz_fe/commit/01d412d0deb47e0cf3ce9e72698931f66ffc6c3c))
+
+
+
+
+
+
 ## [1.2.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.1.0...@jhkz/admin@1.2.1) (2020-04-20)
 
 
