@@ -59,7 +59,15 @@
           </v-col>
           <v-col v-for="item in screenshotList" :key="item.id" cols="3">
             <v-lazy>
-              <v-card hover height="130px">
+              <v-card class="jhkz-screenshot__card" height="130px">
+                <v-overlay class="jhkz-screenshot__card_actions" absolute>
+                  <v-icon @click="openPreview(item.url)">
+                    {{ mdiEye }}
+                  </v-icon>
+                  <v-icon @click="deleteImage(item.id)">
+                    {{ mdiTrashCan }}
+                  </v-icon>
+                </v-overlay>
                 <v-img height="100%" :src="item.coverImgUrl" />
               </v-card>
             </v-lazy>
@@ -68,26 +76,35 @@
       </v-card-text>
     </v-card>
     <v-file-input v-show="false" ref="fileInput" accept="image/*" label="截图上传" @change="fileChange" />
+    <preview-images v-model="previewPanel" :images="previewList" @close="closePreview" />
   </v-dialog>
 </template>
 
 <script lang="ts">
+import PreviewImages from '../preview-images/index.vue'
 import { Component, Vue, Model, Watch, Emit, Prop, Ref } from 'vue-property-decorator'
-import { mdiCalendarRange } from '@mdi/js'
+import { mdiCalendarRange, mdiEye, mdiTrashCan } from '@mdi/js'
 import { format } from 'date-fns'
 import { Getter } from 'vuex-class'
 
 @Component({
-  name: 'screenshot-manager'
+  name: 'screenshot-manager',
+  components: {
+    [PreviewImages.options.name]: PreviewImages
+  }
 })
 export default class ScreenshotManager extends Vue {
   @Model('input', { type: Boolean }) value: boolean
   @Prop(String) orderId: string
 
+  previewPanel = false
+  previewList: string[] = []
   dialogScreenshot = false
   uploadLoading = false
   imagesDateMenu = false
   mdiCalendarRange = mdiCalendarRange
+  mdiEye = mdiEye
+  mdiTrashCan = mdiTrashCan
   dates = [format(new Date(), 'yyyy-MM-dd')]
   screenshotList = []
   queryForm = {
@@ -140,6 +157,17 @@ export default class ScreenshotManager extends Vue {
 
   @Emit()
   close () {}
+
+  deleteImage () {}
+
+  closePreview () {
+    this.previewList = []
+  }
+
+  openPreview (url: string) {
+    this.previewList = [url]
+    this.previewPanel = true
+  }
 
   async queryImages () {
     this.screenshotList = await this.$api.getOrders(undefined, {
@@ -215,6 +243,16 @@ export default class ScreenshotManager extends Vue {
     bottom 0
     left 0
     right 0
+  }
+  +element(card) {
+    +modifier(actions) {
+      display none
+    }
+    &:hover {
+      .jhkz-screenshot__card_actions {
+        display flex
+      }
+    }
   }
 }
 </style>

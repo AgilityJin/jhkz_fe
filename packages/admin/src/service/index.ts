@@ -87,3 +87,8 @@ export const uploadImage = {
   url: '/open/image',
   method: 'post'
 }
+
+export const removeImage = {
+  url: '/open/image',
+  method: 'delete'
+}

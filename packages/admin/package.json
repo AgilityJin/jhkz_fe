@@ -1,6 +1,6 @@
 {
   "name": "@jhkz/admin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "江湖客栈后台管理系统",
   "main": "index.js",
   "license": "MIT",
