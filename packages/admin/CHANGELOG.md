@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.1.0...@jhkz/admin@1.2.1) (2020-04-20)
+
+
+### Features
+
+* **order image:** 支持订单上传截图 ([f5fd248](https://github.com/AgilityJin/jhkz_fe/commit/f5fd248a200061edb492da2007bcdf777ef49ee5))
+* **preview images:** 增加图片预览功能 ([b7c8aa3](https://github.com/AgilityJin/jhkz_fe/commit/b7c8aa3f841944945d830a7e0a4b16d66983e3a5))
+
+
+
+
+
+
 # 1.1.0 (2020-04-17)
 
 
