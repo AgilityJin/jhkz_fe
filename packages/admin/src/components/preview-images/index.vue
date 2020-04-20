@@ -1,6 +1,6 @@
 <template>
   <v-overlay :value="dialogPanel" :z-index="zIndex" @click.native="closePreview">
-    <v-img max-width="90vh" contain :src="currentImage" @click.stop="clickImage" />
+    <v-img max-width="90vw" max-height="90vh" contain :src="currentImage" @click.stop="clickImage" />
   </v-overlay>
 </template>
 
