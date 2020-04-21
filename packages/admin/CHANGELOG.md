@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.2...@jhkz/admin@1.2.3) (2020-04-21)
+
+
+### Features
+
+* **order image:** 对接订单删除接口 & 预览图片增加关闭按钮 ([ff21589](https://github.com/AgilityJin/jhkz_fe/commit/ff21589557549a408a3e5ab23e89f871039ae745))
+
+
+
+
+
+
 ## [1.2.2](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.1...@jhkz/admin@1.2.2) (2020-04-20)
 
 
