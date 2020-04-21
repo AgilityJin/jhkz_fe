@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.3...@jhkz/admin@1.2.4) (2020-04-21)
+
+
+### Bug Fixes
+
+* **api:** fix request error ([2dae832](https://github.com/AgilityJin/jhkz_fe/commit/2dae83277e81e6f8a44271f1007b779e2417a623))
+
+
+
+
+
+
 ## [1.2.3](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.2...@jhkz/admin@1.2.3) (2020-04-21)
 
 
