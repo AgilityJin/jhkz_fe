@@ -156,9 +156,19 @@ export default class ScreenshotManager extends Vue {
   }
 
   @Emit()
-  close () {}
+  close () {
+    this.uploadLoading = false
+  }
 
-  deleteImage () {}
+  async deleteImage (id: string) {
+    this.uploadLoading = true
+    await this.$api.removeOrder(undefined, {
+      payload: `/${this.orderId}/images/${id}`
+    })
+    this.uploadLoading = false
+    this.$msg.success('删除订单截图成功')
+    this.queryImages()
+  }
 
   closePreview () {
     this.previewList = []
@@ -178,10 +188,10 @@ export default class ScreenshotManager extends Vue {
   async uploadImage (file: any) {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('orderId', this.orderId)
     formData.append('userId', this.userInfo.userId)
     this.uploadLoading = true
-    await this.$api.uploadImage(formData, {
+    await this.$api.createOrder(formData, {
+      payload: `/${this.orderId}/images`,
       headers: {
         'Content-Type': 'multipart/form-data'
       }

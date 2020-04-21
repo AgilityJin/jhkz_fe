@@ -14,6 +14,9 @@ export const Api = new Request({
   requestInterceptor: (config) => {
     const userInfo = getStorage(CONTEXT_KEY)
     config.headers.merchantId = userInfo && userInfo.merchantId
+    if (!config.headers.Authorization) {
+      config.headers.Authorization = `bearer ${userInfo.token}`
+    }
     return config
   },
   // 业务异常
