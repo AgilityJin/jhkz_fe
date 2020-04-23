@@ -103,6 +103,17 @@
           />
         </v-col>
         <v-col cols="3">
+          <v-select
+            v-model="queryForm.gameCategoryId"
+            :items="gameCategories"
+            item-text="name"
+            item-value="id"
+            clearable
+            hide-selected
+            label="所属游戏"
+          />
+        </v-col>
+        <v-col cols="3">
           <v-btn color="primary" @click="queryOrders">
             查询
           </v-btn>
@@ -164,7 +175,7 @@
     <v-dialog v-model="createOrUpdatePanel" max-width="650" @click:outside="closeOrderPanel">
       <v-card :loading="orderPanelLoading">
         <v-card-title>
-          <span>{{ orderPanelType === 'add' ? '新建' : '修改 ' }}订单</span>
+          <span>{{ orderPanelType === 'add' ? '新建' : '修改' }}订单</span>
         </v-card-title>
 
         <v-card-text>
@@ -178,10 +189,13 @@
                 </v-col>
                 <v-col cols="6">
                   <v-select
-                    v-model="currentForm.status"
-                    :items="ORDER_STATUS"
+                    v-model="currentForm.gameCategoryId"
+                    :rules="rules.gameCategoryId"
+                    :items="gameCategories"
+                    item-text="name"
+                    item-value="id"
                     hide-selected
-                    label="订单状态"
+                    label="*所属游戏"
                   />
                 </v-col>
                 <v-col cols="6">
@@ -266,15 +280,25 @@
                     </v-date-picker>
                   </v-menu>
                 </v-col>
+                <v-col cols="6">
+                  <v-select
+                    v-model="currentForm.status"
+                    :items="ORDER_STATUS"
+                    hide-selected
+                    label="订单状态"
+                  />
+                </v-col>
+                <v-col cols="6">
+                  <v-textarea
+                    v-model="currentForm.comments"
+                    :counter="limitDesc"
+                    no-resize
+                    rows="1"
+                    auto-grow
+                    label="备注"
+                  />
+                </v-col>
               </v-row>
-              <v-textarea
-                v-model="currentForm.comments"
-                :counter="limitDesc"
-                no-resize
-                rows="1"
-                auto-grow
-                label="备注"
-              />
             </v-form>
           </v-container>
         </v-card-text>
@@ -299,6 +323,7 @@
 <script lang="ts">
 import { refValidate, refReset, isPhone, length, required } from '../../utils/validate'
 import { ORDER_LENGTH } from '../../config/limit-length'
+import { IGameCategories } from '../../interface'
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiCalendarRange, mdiFolderMultipleImage } from '@mdi/js'
 import { Pagination, Confirm } from '~/components'
@@ -331,11 +356,17 @@ export default class OrderPage extends Vue {
   confirmItem: any = null
   ORDER_STATUS = ORDER_STATUS
   ORDER_STATUS_MAP = ORDER_STATUS_MAP
+  gameCategories: IGameCategories[] = []
 
   headers = [{
     text: '订单号',
     align: 'center',
     value: 'orderId',
+    sortable: false
+  }, {
+    text: '所属游戏',
+    align: 'center',
+    value: 'gameCategory.name',
     sortable: false
   }, {
     text: '账号',
@@ -402,7 +433,8 @@ export default class OrderPage extends Vue {
     roleName: '',
     roleArea: '',
     comments: '',
-    status: ''
+    status: '',
+    gameCategoryId: null
   }
 
   currentForm = {
@@ -414,6 +446,7 @@ export default class OrderPage extends Vue {
     startTime: '',
     endTime: '',
     comments: '',
+    gameCategoryId: null,
     status: 'not_started'
   }
 
@@ -447,6 +480,9 @@ export default class OrderPage extends Vue {
     formPhone: [
       required('请提供联系手机'),
       isPhone('请填写正确的手机号')
+    ],
+    gameCategoryId: [
+      required('请选择订单所属游戏')
     ]
   }
 
@@ -504,8 +540,6 @@ export default class OrderPage extends Vue {
   }
 
   async submit () {
-    const validate = await refValidate(this.$refs, 'order')
-    if (!validate) { return }
     this.orderPanelLoading = true
     const [err] = await asyncTask(this.$api.createOrder(this.currentForm))
     this.orderPanelLoading = false
@@ -524,6 +558,8 @@ export default class OrderPage extends Vue {
   }
 
   async submitOrUpdate (type: 'add' | 'edit') {
+    const validate = await refValidate(this.$refs, 'order')
+    if (!validate) { return }
     if (type === 'add') {
       this.submit()
     } else {
