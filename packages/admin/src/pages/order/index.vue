@@ -333,6 +333,7 @@ import { SYNOPSIS_MAX_LENGTH } from '~/config/limit-length'
 import { format, parseISO } from 'date-fns'
 import { ORDER_STATUS_MAP, ORDER_STATUS } from '~/config/constants'
 import ScreenshotManager from '~/components/screenshot-manager/index.vue'
+import { Action } from 'vuex-class'
 
 @Component({
   components: {
@@ -488,7 +489,15 @@ export default class OrderPage extends Vue {
 
   created () {
     this.getOrders()
+    this.getAllGameCategories()
   }
+
+  async getAllGameCategories () {
+    this.gameCategories = await this.getGameCategories()
+  }
+
+  @Action('getGameCategories', { namespace: 'system-info' })
+  getGameCategories: () => Promise<IGameCategories[]>
 
   openScreenshotManagerPanel ({ orderId }: any) {
     this.screenshotManagerOrderId = orderId

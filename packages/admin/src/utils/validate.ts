@@ -1,4 +1,4 @@
-import { phoneNumReg } from './regular'
+import { phoneNumReg, urlReg } from './regular'
 
 export const refReset = (refs: any, refName: string) => {
   const ref: any = refs[refName]
@@ -36,4 +36,9 @@ export const length = (length: number, errorMsg = '') => (value: string) => {
 export const isPhone = (errorMsg = '') => (value: string) => {
   if (!value) { return true }
   return (phoneNumReg.test(value)) || errorMsg
+}
+
+export const isUrl = (errorMsg = '') => (value: string) => {
+  if (!value) { return true }
+  return (urlReg.test(value)) || errorMsg
 }

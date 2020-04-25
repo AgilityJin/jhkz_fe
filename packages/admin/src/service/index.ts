@@ -92,3 +92,23 @@ export const removeImage = {
   url: '/open/image',
   method: 'delete'
 }
+
+export const createGameCategory = {
+  url: '/game-categories',
+  method: 'post'
+}
+
+export const getGameCategories = {
+  url: '/game-categories',
+  method: 'get'
+}
+
+export const updateGameCategory = {
+  url: '/game-categories',
+  method: 'put'
+}
+
+export const removeGameCategory = {
+  url: '/game-categories',
+  method: 'delete'
+}
