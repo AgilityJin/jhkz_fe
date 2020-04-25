@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.4...@jhkz/admin@1.3.0) (2020-04-25)
+
+
+### Features
+
+* **game categories:** 添加游戏类目支持 ([1270bf3](https://github.com/AgilityJin/jhkz_fe/commit/1270bf354e67b59ea7c3da939b486ac79fa7afae))
+* **save:** save change ([b72604f](https://github.com/AgilityJin/jhkz_fe/commit/b72604f0e984861199f8a7ad64f746f48787f8a9))
+
+
+
+
+
+
 ## [1.2.4](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.3...@jhkz/admin@1.2.4) (2020-04-21)
 
 
