@@ -6,10 +6,10 @@
       </v-list-item-icon>
       <v-list-item-content>
         <v-list-item-title class="title">
-          江湖客栈
+          {{ userInfo && userInfo.merchant && userInfo.merchant.name }}
         </v-list-item-title>
         <v-list-item-subtitle>
-          江湖幸甚有你
+          {{ userInfo && userInfo.merchant && userInfo.merchant.description }}
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>

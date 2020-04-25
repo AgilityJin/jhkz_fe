@@ -5,8 +5,7 @@ const NuxtConfig: Configuration = {
   mode: 'spa',
   srcDir: 'src',
   head: {
-    titleTemplate: '%s - ' + '江湖客栈后台管理系统',
-    title: '江湖客栈',
+    titleTemplate: '%s - ' + '商户后台管理系统',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
