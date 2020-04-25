@@ -1,5 +1,7 @@
+import { version } from '~/../package.json'
+
 export const APP_ENV = {
-  version: '1.3.4',
+  version,
   isProd: process.env.ENV === 'prod',
   apiHost: '/api/v1'
 }

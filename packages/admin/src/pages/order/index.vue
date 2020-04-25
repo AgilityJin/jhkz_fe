@@ -597,6 +597,7 @@ export default class OrderPage extends Vue {
       this.currentForm.endTime = item.endTime && format(parseISO(item.endTime), 'yyyy-MM-dd')
       this.currentForm.comments = item.comments
       this.currentForm.status = item.status
+      this.currentForm.gameCategoryId = item.gameCategoryId
       this.currentId = item.id
     } else {
       this.currentForm.status = 'not_started'
