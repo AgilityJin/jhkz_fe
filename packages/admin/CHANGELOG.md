@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.3.0...@jhkz/admin@1.3.1) (2020-04-25)
+
+
+### Bug Fixes
+
+* **order:** 修复修改订单时无法恢复所属游戏的问题 ([a1c6caf](https://github.com/AgilityJin/jhkz_fe/commit/a1c6caf9c8a935f1580e885d331ae650e1440ebc))
+
+
+
+
+
+
 # [1.3.0](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.2.4...@jhkz/admin@1.3.0) (2020-04-25)
 
 
