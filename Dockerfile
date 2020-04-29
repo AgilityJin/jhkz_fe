@@ -1,5 +1,5 @@
 FROM nginx:1.17
-FROM node:13.10.1-slim
+FROM node:13.10.1
 
 LABEL AgilityJin agility_jin@outlook.com
 
