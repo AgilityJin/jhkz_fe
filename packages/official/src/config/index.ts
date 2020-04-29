@@ -1,3 +1,5 @@
+export const IS_PROD = process.env.ENV === 'prod'
+
 export const CustomerServiceQQ = '194703103' // 客户qq
 
 export const ICP = '鲁ICP备20007448号' // 备案号

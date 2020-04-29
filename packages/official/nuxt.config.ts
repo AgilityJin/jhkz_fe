@@ -5,7 +5,8 @@ const NuxtConfig: Configuration = {
   mode: 'spa',
   srcDir: 'src',
   head: {
-    title: '江湖客栈',
+    titleTemplate: '%s - ' + process.env.npm_package_name,
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,11 +24,7 @@ const NuxtConfig: Configuration = {
     '~/assets/styles/global.styl'
   ],
   plugins: [
-    '~plugins/styles.plugin.ts'
   ],
-  server: {
-    host: '0.0.0.0'
-  },
   // SSR need active
   generate: {
     routes: [
@@ -38,7 +35,8 @@ const NuxtConfig: Configuration = {
     '@nuxtjs/style-resources',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/svg-sprite'
+    '@nuxtjs/svg-sprite',
+    '@nuxtjs/proxy'
   ],
   buildModules: [
     '@nuxt/typescript-build',
@@ -46,11 +44,19 @@ const NuxtConfig: Configuration = {
     '@nuxtjs/router',
     '@nuxtjs/vuetify'
   ],
+  server: {
+    // host: '0.0.0.0',
+    port: 3100
+  },
   build: {
-    extend(config) {
+    extend (config) {
       if (config.resolve) {
         config.resolve.symlinks = false
       }
+    },
+    babel: {
+      // 按需加载配置
+      plugins: []
     }
   },
   // plugins config
@@ -81,6 +87,14 @@ const NuxtConfig: Configuration = {
   },
   svgSprite: {
     input: '~/assets/svg/'
+  },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:8081',
+      pathRewrite: {
+        '^/api': '/' // 需要rewrite的, 路径重写
+      }
+    }
   }
 }
 

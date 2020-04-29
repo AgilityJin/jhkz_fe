@@ -2,3 +2,23 @@ $base-font-size := 12px
 $base-font-color := '#575D6A'
 $base-line-height := 1.15
 $base-font-family := "Microsoft YaHei", Arial, Verdana, Tahoma
+
+// 加深颜色
+darken-color($color, $darken = 10%) {
+  darken($color, $darken)
+};
+
+// 提亮
+lighten-color($color, $darken = 10%) {
+  lighten($color, $darken)
+};
+
+// 饱和度增加
+saturate-color($color, $darken = 10%) {
+  saturate($color, $darken)
+};
+
+// 饱和度降低
+desaturate-color($color, $darken = 10%) {
+  saturate($color, $darken)
+};

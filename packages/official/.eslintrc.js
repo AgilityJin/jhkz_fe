@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     "ecmaFeatures": {
       legacyDecorators: true
     }
@@ -17,9 +17,10 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript',
   ],
   plugins: [
-    'vue'
+    'vue',
+    '@typescript-eslint'
   ],
-  // 可参考eslint-config.md
+  // see eslint-config.md
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
