@@ -1,5 +1,4 @@
 FROM nginx:1.17
-FROM node:13.10.1
 
 LABEL AgilityJin agility_jin@outlook.com
 
@@ -8,6 +7,7 @@ ARG NGINX_CONF_FILE=docker/nginx.conf
 ENV NGINX_CONF_DIR=/etc/nginx/conf.d
 
 RUN mkdir -p ${APP_DIR} \
+    && nginx -v \
     && yarn --version \
     && yarn config set registry http://r.cnpmjs.org/
 
