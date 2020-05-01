@@ -1,4 +1,4 @@
-FROM node:13.10.1
+FROM docker378928518/fe-static
 
 LABEL AgilityJin agility_jin@outlook.com
 
@@ -7,12 +7,10 @@ ARG NGINX_CONF_FILE=docker/nginx.conf
 ENV NGINX_CONF_DIR=/etc/nginx/conf.d
 
 RUN mkdir -p ${APP_DIR} \
-    && apt update \
-    && apt install nginx -y \
     && nginx -v \
     && node -v \
     && yarn -v \
-    && yarn config set registry http://r.cnpmjs.org/
+    && yarn config get registry
 
 WORKDIR ${APP_DIR}
 COPY . ${APP_DIR}
@@ -30,8 +28,3 @@ COPY ./$NGINX_CONF_FILE .
 
 EXPOSE 3100
 EXPOSE 3200
-
-EXPOSE 443
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
