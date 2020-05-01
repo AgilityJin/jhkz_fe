@@ -15,8 +15,8 @@ RUN mkdir -p ${APP_DIR} \
 WORKDIR ${APP_DIR}
 COPY . ${APP_DIR}
 RUN yarn install \
-    # && yarn workspace @jhkz/admin lintfix \
-    # && yarn workspace @jhkz/official lintfix \
+    && yarn workspace @jhkz/admin lintfix \
+    && yarn workspace @jhkz/official lintfix \
     && yarn workspace @jhkz/admin generate \
     && yarn workspace @jhkz/official generate
 
