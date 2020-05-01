@@ -7,10 +7,11 @@
   "repository": "https://github.com/AgilityJin/jhkz_fe",
   "private": true,
   "scripts": {
-    "commit": "git cz",
-    "build": "yarn buildtar:pro",
-    "buildtar:dev": "sh scripts/docker-build-tar.sh development",
-    "buildtar:pro": "sh scripts/docker-build-tar.sh production"
+    "dev:admin": "yarn workspace @jhkz/admin dev",
+    "dev:official": "yarn workspace @jhkz/official dev",
+    "build:admin": "yarn workspace @jhkz/admin generate",
+    "build:official": "yarn workspace @jhkz/official generate",
+    "commit": "git cz"
   },
   "workspaces": {
     "packages": [
