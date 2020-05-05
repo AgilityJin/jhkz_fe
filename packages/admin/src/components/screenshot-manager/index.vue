@@ -81,11 +81,11 @@
 </template>
 
 <script lang="ts">
+import PreviewImages from '../preview-images/index.vue'
 import { Component, Vue, Model, Watch, Emit, Prop, Ref } from 'vue-property-decorator'
 import { mdiCalendarRange, mdiEye, mdiTrashCan } from '@mdi/js'
 import { format } from 'date-fns'
 import { Getter } from 'vuex-class'
-import PreviewImages from '../preview-images/index.vue'
 
 @Component({
   name: 'screenshot-manager',

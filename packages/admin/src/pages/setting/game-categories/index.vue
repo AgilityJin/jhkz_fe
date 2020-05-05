@@ -75,12 +75,12 @@
 </template>
 
 <script lang="ts">
+import { IGameCategories } from '../../../interface'
+import { required, isUrl } from '../../../utils/validate'
 import { Vue, Component, Ref } from 'vue-property-decorator'
 import debounce from 'lodash/debounce'
 import { Action } from 'vuex-class'
 import { asyncTask } from '@helper-gdp/utils'
-import { IGameCategories } from '../../../interface'
-import { required, isUrl } from '../../../utils/validate'
 import { Pagination, Confirm } from '~/components'
 
 @Component({

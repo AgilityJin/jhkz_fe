@@ -15,7 +15,7 @@ import AppNav from '~/pages/layouts/app-nav.vue'
 
 @Component({
   components: {
-    [AppNav.options.name]: AppNav
+    AppNav
   }
 })
 export default class DefaultLayout extends Vue {}
