@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.2...@jhkz/official@1.2.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* **comp plugin:** fix plugin import ([6253ea4](https://github.com/AgilityJin/jhkz_fe/commit/6253ea4727d76c39d4afbdb58b67e87f487c2a10))
+
+
+
+
+
 ## [1.2.2](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.1...@jhkz/official@1.2.2) (2020-05-05)
 
 
