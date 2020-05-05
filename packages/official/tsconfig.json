@@ -36,7 +36,7 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*", "../../vue-shim.d.ts"
   ],
   "exclude": [
     "node_modules",

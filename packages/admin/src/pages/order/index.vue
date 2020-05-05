@@ -321,19 +321,19 @@
 </template>
 
 <script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import { mdiCalendarRange, mdiFolderMultipleImage } from '@mdi/js'
+import debounce from 'lodash/debounce'
+import { asyncTask } from '@helper-gdp/utils'
+import { format, parseISO } from 'date-fns'
+import { Action } from 'vuex-class'
 import { refValidate, refReset, isPhone, length, required } from '../../utils/validate'
 import { ORDER_LENGTH } from '../../config/limit-length'
 import { IGameCategories } from '../../interface'
-import { Vue, Component } from 'vue-property-decorator'
-import { mdiCalendarRange, mdiFolderMultipleImage } from '@mdi/js'
 import { Pagination, Confirm } from '~/components'
-import debounce from 'lodash/debounce'
-import { asyncTask } from '@helper-gdp/utils'
 import { SYNOPSIS_MAX_LENGTH } from '~/config/limit-length'
-import { format, parseISO } from 'date-fns'
 import { ORDER_STATUS_MAP, ORDER_STATUS } from '~/config/constants'
 import ScreenshotManager from '~/components/screenshot-manager/index.vue'
-import { Action } from 'vuex-class'
 
 @Component({
   components: {

@@ -1,45 +1,82 @@
 <template>
-  <v-app-bar :height="62" class="jhkz-nav" app>
+  <v-app-bar class="jhkz-nav" app>
     <div class="jhkz-nav__box">
-      <v-toolbar-title>
+      <v-toolbar-title class="jhkz-nav__toolbar">
         <div class="jhkz-nav__logo" />
         <span class="caption">专业综合网游售后服务平台</span>
       </v-toolbar-title>
+      <v-tabs centered class="jhkz-nav__tabs" height="100%">
+        <v-tab>首页</v-tab>
+        <v-tab>我的代练</v-tab>
+        <v-tab>我的订单</v-tab>
+      </v-tabs>
+      <div class="jhkz-nav__aside">
+        <v-text-field
+          background-color="#e1e1e0"
+          placeholder="游戏、代练名称"
+          rounded
+          dense
+          class="jhkz-nav__aside-input"
+          type="text"
+          :append-icon="mdiMagnify"
+        />
+        <a>登录</a>
+        |
+        <a>注册</a>
+      </div>
     </div>
   </v-app-bar>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { mdiMagnify } from '@mdi/js'
 
 @Component({
   name: 'app-nav'
 })
-export default class AppNav extends Vue {}
+export default class AppNav extends Vue {
+  mdiMagnify = mdiMagnify
+}
 </script>
 
 <style lang="stylus">
 +block(nav)
   / .v-toolbar
     box-shadow 0px 0px 24px 0px rgba(114, 114, 114, 0.28)
+  > .v-toolbar__content
+    justify-content center
+    padding 0
 </style>
 
 <style lang="stylus" scoped>
 $logo := '../../assets/images/logo-1.png';
 +block(nav)
+  height 62px
+  line-height 62px
   color $base-font-color-2
   background-color #fff !important
+  +element(tabs)
+    width auto
+  +element(toolbar)
+    display flex
+    align-items center
+    height 100%
+  +element(aside-input)
+    display inline-block
+    font-size 14px
+  +element(aside)
+    float right
+    font-size 18px
   +element(box)
-    position absolute
-    margin auto
-    left 0
-    right 0
+    display flex
     width 100%
     max-width 1480px
+    height 100%
   +element(logo)
     display inline-block
     width 126px
     height 32px
     background url($logo) center no-repeat
-    background cover
+    background-size cover
 </style>

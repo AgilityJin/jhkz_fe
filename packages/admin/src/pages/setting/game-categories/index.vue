@@ -75,13 +75,13 @@
 </template>
 
 <script lang="ts">
-import { required, isUrl } from '../../../utils/validate'
-import { IGameCategories } from '../../../interface'
 import { Vue, Component, Ref } from 'vue-property-decorator'
 import debounce from 'lodash/debounce'
-import { Pagination, Confirm } from '~/components'
 import { Action } from 'vuex-class'
 import { asyncTask } from '@helper-gdp/utils'
+import { IGameCategories } from '../../../interface'
+import { required, isUrl } from '../../../utils/validate'
+import { Pagination, Confirm } from '~/components'
 
 @Component({
   components: {

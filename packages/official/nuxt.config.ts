@@ -24,6 +24,8 @@ const NuxtConfig: Configuration = {
     '~/assets/styles/global.styl'
   ],
   plugins: [
+    '~/plugins/filters.plugin.ts',
+    '~/plugins/components.plugin.ts'
   ],
   // SSR need active
   generate: {

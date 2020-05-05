@@ -133,10 +133,10 @@
 </template>
 
 <script lang="ts">
-import { required, maxLength, refValidate, minLength, refReset } from '../../../utils/validate'
 import { Vue, Component } from 'vue-property-decorator'
 import { Action } from 'vuex-class'
 import { debounce } from 'lodash'
+import { required, maxLength, refValidate, minLength, refReset } from '../../../utils/validate'
 import { Pagination, Confirm } from '~/components'
 import { SYNOPSIS_MAX_LENGTH, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH } from '~/config/limit-length'
 

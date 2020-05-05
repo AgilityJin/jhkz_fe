@@ -1,6 +1,6 @@
-import { routes } from './routes'
 import Vue from 'vue'
 import Router from 'vue-router'
+import { routes } from './routes'
 import { APP_ENV } from '~/config'
 
 Vue.use(Router)

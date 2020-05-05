@@ -7,6 +7,7 @@
   "repository": "https://github.com/AgilityJin/jhkz_fe",
   "private": true,
   "scripts": {
+    "lintfix": "yarn workspace @jhkz/admin lintfix && yarn workspace @jhkz/official lintfix",
     "dev:admin": "yarn workspace @jhkz/admin dev",
     "dev:official": "yarn workspace @jhkz/official dev",
     "build:admin": "yarn workspace @jhkz/admin generate",

@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <app-nav />
-    <v-content class="jhkz-content" app>
-      <v-container class="jhkz-container" fluid>
+    <v-content class="jhkz-app-content" app>
+      <v-container class="jhkz-app-container" fluid>
         <nuxt />
       </v-container>
     </v-content>
@@ -22,8 +22,9 @@ export default class DefaultLayout extends Vue {}
 </script>
 
 <style lang="stylus" scoped>
-+block(content)
++block(app-container)
+  position relative
+  padding 0
++block(app-content)
   background rgba(248, 248, 248, 1)
-+block(container)
-  max-width 1480px
 </style>
