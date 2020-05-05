@@ -1,7 +1,7 @@
 <template>
   <v-carousel
     v-model="swiperIndex"
-    del-cycle
+    cycle
     height="440"
     class="jhkz-banner"
     hide-delimiter-background
@@ -33,14 +33,19 @@
       </div>
     </v-carousel-item>
     <v-carousel-item>
-      <div class="jhkz-banner__item  jhkz-banner__item_1">
-        <p class="item-content2">
-          PVP&PVE日常 | 竞技场代练 | 资历代练 | 游戏金币 | 外观代抢
-        </p>
-      </div>
+      <div class="jhkz-banner__item  jhkz-banner__item_2" />
     </v-carousel-item>
     <v-carousel-item>
-      <div class="jhkz-banner__item  jhkz-banner__item_1" />
+      <div class="jhkz-banner__item  jhkz-banner__item_3">
+        <div class="item-content3">
+          <strong class="ft-40">代练进度展示</strong>
+          <br>
+          <strong class="ft-40">-</strong>
+          <br>
+          <p>查询方式多种可选</p>
+          <p>游戏账号 | 手机号 | 订单号</p>
+        </div>
+      </div>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -52,13 +57,30 @@ import { Vue, Component } from 'vue-property-decorator'
   name: 'home-banner'
 })
 export default class HomeBannerPage extends Vue {
-  swiperIndex = 2
+  swiperIndex = 0
 }
 </script>
 
 <style lang="stylus" scoped>
 $banner1 := '../../assets/images/banner-1.png'
+$banner2 := '../../assets/images/banner-2.png'
+$banner3 := '../../assets/images/banner-3.png'
 $banner1-text := '../../assets/images/banner-1-text.png'
+
+.ft-40
+  font-size 40px
+.item-content3
+  position absolute
+  right 143px
+  top 90px
+  width 325px
+  color #fff
+  font-size 24px
+  line-height 1.3
+  text-align right
+  p
+    margin 0
+    line-height 1.3
 
 .item-content
   margin 105px 0 0 105px
@@ -85,15 +107,15 @@ $banner1-text := '../../assets/images/banner-1-text.png'
     width 100%
     height 100%
     background red
+    +modifier(3)
+      background url($banner3) no-repeat center
+      background-size cover
+    +modifier(2)
+      background url($banner2) no-repeat center
+      background-size cover
     +modifier(1)
       background url($banner1) no-repeat center
       background-size cover
-      & .item-content2
-        position absolute
-        left 107px
-        bottom 50px
-        color #fff
-        font-size 24px
       & .item-content
         font-size 40px
         color #fff

@@ -1,3 +1,5 @@
+import { OSReg } from './regular'
+
 /* storage start */
 // export const getStorage = (key: string, isNeedParse = true) => {
 //   const str = localStorage.getItem(key)
@@ -21,3 +23,26 @@
 //     return parseInt(String(totalCount / pagesize + 1), 10)
 //   }
 // }
+
+/**
+ * @name 获取当前系统环境
+ */
+export function getOS () {
+  if (navigator && navigator.userAgent) {
+    const os = navigator.userAgent.match(OSReg)
+    if (os) {
+      switch (os[1].toLowerCase()) {
+        case 'iphone':
+        case 'ipod':
+          return { iPhone: true, iOS: true }
+        case 'ipad':
+          return { iPad: true, iOS: true }
+        case 'android':
+          return { android: true }
+        default:
+          return { pc: true }
+      }
+    } else { return { pc: true } }
+  }
+  return {}
+}

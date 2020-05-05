@@ -3,7 +3,7 @@
     <div class="jhkz-nav__box">
       <v-toolbar-title class="jhkz-nav__toolbar">
         <div class="jhkz-nav__logo" />
-        <span class="caption">专业综合网游售后服务平台</span>
+        <span class="jhkz-nav__caption caption">专业综合网游售后服务平台</span>
       </v-toolbar-title>
       <v-tabs centered class="jhkz-nav__tabs" height="100%">
         <v-tab>首页</v-tab>
@@ -20,9 +20,9 @@
           type="text"
           :append-icon="mdiMagnify"
         />
-        <a>登录</a>
+        <a class="jhkz-nav__btn">登录</a>
         |
-        <a>注册</a>
+        <a class="jhkz-nav__btn">注册</a>
       </div>
     </div>
   </v-app-bar>
@@ -56,6 +56,10 @@ $logo := '../../assets/images/logo-1.png';
   line-height 62px
   color $base-font-color-2
   background-color #fff !important
+  +element(btn)
+    color: #666666
+    &:hover
+      color #1976d2
   +element(tabs)
     width auto
   +element(toolbar)
@@ -65,6 +69,7 @@ $logo := '../../assets/images/logo-1.png';
   +element(aside-input)
     display inline-block
     font-size 14px
+    margin-right 24px
   +element(aside)
     float right
     font-size 18px
@@ -73,6 +78,9 @@ $logo := '../../assets/images/logo-1.png';
     width 100%
     max-width 1480px
     height 100%
+  +element(caption)
+    position relative
+    bottom -10px
   +element(logo)
     display inline-block
     width 126px

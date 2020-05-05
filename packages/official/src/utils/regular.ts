@@ -27,3 +27,5 @@ export const spaceReg = /\s*/g
 
 // 匹配所有英文及数字
 export const englishAndNum = /^[a-zA-Z0-9]+$/
+
+export const OSReg = /(iPhone|iPod|iPad|android);?/i
