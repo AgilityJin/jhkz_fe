@@ -82,7 +82,6 @@ export default class AppNav extends Vue {
 
   goQqChat () {
     const env = getOS()
-    console.log(env)
     const url = env.pc
       ? `http://wpa.qq.com/msgrd?v=3&uin=${CustomerServiceQQ}&site=在线客服&menu=yes`
       : `mqqwpa://im/chat?chat_type=wpa&uin=${CustomerServiceQQ}&version=1&src_type=web&web_src=http:://wpa.b.qq.com`
