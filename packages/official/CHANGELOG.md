@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.1...@jhkz/official@1.2.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* **import component:** fix import comp ([f24a869](https://github.com/AgilityJin/jhkz_fe/commit/f24a869031921397047825ac25fc3f854eb5374c))
+
+
+
+
+
 ## [1.2.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.0...@jhkz/official@1.2.1) (2020-05-05)
 
 
