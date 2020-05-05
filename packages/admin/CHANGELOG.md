@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.3.1...@jhkz/admin@1.4.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* **title:** 修正页面title显示 ([5ba301c](https://github.com/AgilityJin/jhkz_fe/commit/5ba301cb35ee9e7b1592f2b6387f09892935a68c))
+
+
+### Performance Improvements
+
+* **save:** save change ([b1cc34b](https://github.com/AgilityJin/jhkz_fe/commit/b1cc34b1db1041baf5018c3711a54abf20e7d61b))
+
+
+
+
+
+
 ## [1.3.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.3.0...@jhkz/admin@1.3.1) (2020-04-25)
 
 
