@@ -21,10 +21,10 @@
     "strictPropertyInitialization": false,
     "baseUrl": "src",
     "paths": {
-      "~/*": [
-        "./*"
+      "~": [
+        "."
       ],
-      "@/*": [
+      "~/*": [
         "./*"
       ]
     },
@@ -36,7 +36,7 @@
     ]
   },
   "include": [
-    "src/**/*", "../../vue-shim.d.ts"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

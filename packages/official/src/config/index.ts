@@ -1,3 +1,5 @@
+import { version } from '~/../package.json'
+
 export const IS_PROD = process.env.ENV === 'prod'
 
 export const CustomerServiceQQ = '194703103' // 客服qq
@@ -11,3 +13,11 @@ export const TECHNICAL_SUPPORT_EMAIL = 'Agility_Jin@outlook.com' // 技术支持
 export const envConfig = {
   adminAddress: process.env.ADMIN_ADDRESS
 }
+
+export const APP_ENV = {
+  version,
+  platform: 'official',
+  apiHost: '/api/official/v1'
+}
+
+export const CONTEXT_KEY = 'CUSTOMER_CONTEXT'

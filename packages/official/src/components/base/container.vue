@@ -1,18 +1,22 @@
 <template>
-  <div class="jhkz-container">
-    <div class="jhkz-container__content">
+  <div :style="containerStyle" class="jhkz-container">
+    <div :style="contentStyle" :class="contentClass" class="jhkz-container__content">
       <slot />
     </div>
   </div>
 </template>
 
-<script>
-import { Vue, Component } from 'vue-property-decorator'
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component({
   name: 'app-container'
 })
-export default class AppContainerComp extends Vue {}
+export default class AppContainerComp extends Vue {
+  @Prop(String) contentClass?: string
+  @Prop(Object) containerStyle?: Record<string, string | number>
+  @Prop(Object) contentStyle?: Record<string, string | number>
+}
 </script>
 
 <style lang="stylus" scoped>

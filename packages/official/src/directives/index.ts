@@ -1,0 +1,1 @@
+export { funcDebounce } from './debounce'

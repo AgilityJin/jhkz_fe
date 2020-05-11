@@ -6,20 +6,39 @@
         <nuxt />
       </v-container>
     </v-content>
+    <app-dialog-login :value="loginPanel" @close="SET_LOGIN_PANEL(false)" />
+    <app-dialog-sms-login :value="loginSmsPanel" @close="SET_LOGIN_SMS_PANEL(false)" />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import AppNav from '~/pages/layouts/app-nav.vue'
+import AppDialogLogin from '~/components/login-dialog.vue'
+import AppDialogSmsLogin from '~/components/sms-login-dialog.vue'
+import { Getter, Mutation } from 'vuex-class'
 
 @Component({
   components: {
-    AppNav
+    AppNav,
+    AppDialogLogin,
+    AppDialogSmsLogin
   }
 })
-export default class DefaultLayout extends Vue {}
+export default class DefaultLayout extends Vue {
+  @Getter('loginPanel', { namespace: 'context' }) loginPanel: boolean
+  @Getter('loginSmsPanel', { namespace: 'context' }) loginSmsPanel: boolean
+
+  @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
+  @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
+}
 </script>
+
+<style lang="stylus">
++block(app-content)
+  .v-content__wrap
+    display flex
+</style>
 
 <style lang="stylus" scoped>
 +block(app-container)

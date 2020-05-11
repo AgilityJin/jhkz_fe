@@ -26,10 +26,10 @@
     "strictPropertyInitialization": false,
     "baseUrl": "src",
     "paths": {
-      "~/*": [
-        "./*"
+      "~": [
+        "."
       ],
-      "@/*": [
+      "~/*": [
         "./*"
       ]
     },

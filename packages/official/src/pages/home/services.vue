@@ -6,7 +6,7 @@
           <div class="jhkz-services__logo" />
         </div>
         <div class="jhkz-services__item-box">
-          <div v-for="(item, index) in 8" :key="index" class="jhkz-services__item" :class="`jhkz-services__item_${item}`" />
+          <div v-for="(item, index) in 8" :key="index" class="jhkz-services__item" :class="`jhkz-services__item_${item}`" @click="openChat" />
         </div>
       </div>
     </app-container>
@@ -15,11 +15,17 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { CustomerServiceQQ } from '~/config'
+import { openQqChat } from '~/utils'
 
 @Component({
   name: 'home-services'
 })
-export default class HomeServicesComp extends Vue {}
+export default class HomeServicesComp extends Vue {
+  openChat () {
+    openQqChat(CustomerServiceQQ)
+  }
+}
 </script>
 
 <style lang="stylus" scoped>

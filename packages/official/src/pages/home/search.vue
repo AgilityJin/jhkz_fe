@@ -3,7 +3,7 @@
     <h3>代练服务进度查询，就上江湖客栈</h3>
     <div class="jhkz-home-search__input-box">
       <v-text-field
-        placeholder="输入您要查询的游戏账号"
+        placeholder="输入您要查询的订单号"
         outlined
         class="jhkz-home-search__search headline"
         type="text"

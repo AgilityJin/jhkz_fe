@@ -5,7 +5,7 @@ const NuxtConfig: Configuration = {
   mode: 'spa',
   srcDir: 'src',
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: '%s - ' + '江湖客栈 幸甚有你',
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -25,8 +25,11 @@ const NuxtConfig: Configuration = {
     '~/assets/styles/global.styl'
   ],
   plugins: [
+    '~/plugins/directives.plugin.ts',
     '~/plugins/filters.plugin.ts',
-    '~/plugins/components.plugin.ts'
+    '~/plugins/components.plugin.ts',
+    '~/plugins/api.plugin.ts',
+    '~/plugins/message.plugin.ts'
   ],
   // SSR need active
   generate: {
@@ -93,9 +96,9 @@ const NuxtConfig: Configuration = {
   },
   proxy: {
     '/api': {
-      target: 'http://localhost:8081',
+      target: 'https://jianghukezhan.vip',
       pathRewrite: {
-        '^/api': '/' // 需要rewrite的, 路径重写
+        // '^/api': '/' // 需要rewrite的, 路径重写
       }
     }
   }

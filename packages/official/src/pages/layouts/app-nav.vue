@@ -6,9 +6,15 @@
         <span class="jhkz-nav__caption caption">专业综合网游售后服务平台</span>
       </v-toolbar-title>
       <v-tabs centered class="jhkz-nav__tabs" height="100%">
-        <v-tab>首页</v-tab>
-        <v-tab>我的代练</v-tab>
-        <v-tab>我的订单</v-tab>
+        <v-tab :to="{ name: 'home' }">
+          首页
+        </v-tab>
+        <v-tab v-if="false">
+          我的代练
+        </v-tab>
+        <v-tab :to="{ name: 'userCenter' }">
+          用户中心
+        </v-tab>
       </v-tabs>
       <div class="jhkz-nav__aside">
         <v-text-field
@@ -20,7 +26,7 @@
           type="text"
           :append-icon="mdiMagnify"
         />
-        <a class="jhkz-nav__btn">登录</a>
+        <a class="jhkz-nav__btn" @click="openLoginPanel">登录</a>
         |
         <a class="jhkz-nav__btn">注册</a>
       </div>
@@ -31,12 +37,19 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiMagnify } from '@mdi/js'
+import { Mutation } from 'vuex-class'
 
 @Component({
   name: 'app-nav'
 })
 export default class AppNav extends Vue {
   mdiMagnify = mdiMagnify
+
+  @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
+
+  openLoginPanel () {
+    this.SET_LOGIN_PANEL(true)
+  }
 }
 </script>
 

@@ -19,6 +19,9 @@ import HomeServices from './services.vue'
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({
+  head: {
+    title: '首页'
+  },
   components: {
     HomeBanner,
     HomeSearch,

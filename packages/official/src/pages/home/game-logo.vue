@@ -2,7 +2,7 @@
   <app-container class="jhkz-home-game-logo">
     <v-row>
       <v-col v-for="(item, index) in 6" :key="index" :cols="4">
-        <v-card hover>
+        <v-card del-hover>
           <div class="jhkz-home-game-logo__logo" :class="`jhkz-home-game-logo__logo_${item}`" />
         </v-card>
       </v-col>

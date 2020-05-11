@@ -14,19 +14,19 @@
           <v-divider style="border-color: #494949;" />
           <v-row>
             <v-col>
-              <div>
+              <div class="pointer" @click="openChat">
                 外观交易推荐
                 <span class="jhkz-footer__tip">
                   （云间小舍）
                 </span>
               </div>
-              <div>
+              <div class="pointer" @click="openChat">
                 账号代售推荐
                 <span class="jhkz-footer__tip">
                   （风暴代售）
                 </span>
               </div>
-              <div>
+              <div class="pointer" @click="openChat">
                 游戏金币推荐
                 <span class="jhkz-footer__tip">
                   （老宅金币）
@@ -35,7 +35,7 @@
             </v-col>
             <v-col>
               <div>
-                <v-btn :width="98" :height="28" color="#C30D23" @click="goQqChat">
+                <v-btn :width="98" :height="28" color="#C30D23" @click="openChat">
                   <v-icon color="#fff" left>
                     {{ mdiQqchat }}
                   </v-icon>
@@ -53,7 +53,7 @@
           <div class="text-center">
             <div class="jhkz-footer__tm-code" />
             <div class="jhkz-footer__code-desc">
-              天猫店铺二维码
+              天猫店铺
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { CustomerServiceQQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL } from '~/config'
 import { mdiQqchat } from '@mdi/js'
-import { getOS } from '~/utils'
+import { openQqChat } from '~/utils'
 
 @Component({
   name: 'app-nav'
@@ -80,12 +80,8 @@ export default class AppNav extends Vue {
   ICP_URL = ICP_URL
   mdiQqchat = mdiQqchat
 
-  goQqChat () {
-    const env = getOS()
-    const url = env.pc
-      ? `http://wpa.qq.com/msgrd?v=3&uin=${CustomerServiceQQ}&site=在线客服&menu=yes`
-      : `mqqwpa://im/chat?chat_type=wpa&uin=${CustomerServiceQQ}&version=1&src_type=web&web_src=http:://wpa.b.qq.com`
-    window.open(url)
+  openChat () {
+    openQqChat(CustomerServiceQQ)
   }
 }
 </script>
@@ -93,6 +89,9 @@ export default class AppNav extends Vue {
 <style lang="stylus" scoped>
 $logo := '../../assets/images/logo-3.png'
 $shopCode := '../../assets/images/shop-code.png'
+
+.pointer
+  cursor pointer
 
 +block(footer)
   +element(aside)
