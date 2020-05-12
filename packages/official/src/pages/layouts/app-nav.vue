@@ -26,9 +26,9 @@
           type="text"
           :append-icon="mdiMagnify"
         />
-        <a class="jhkz-nav__btn" @click="openLoginPanel">登录</a>
+        <a class="jhkz-nav__btn" @click="openPanel('password')">登录</a>
         |
-        <a class="jhkz-nav__btn">注册</a>
+        <a class="jhkz-nav__btn" @click="openPanel('register')">注册</a>
       </div>
     </div>
   </v-app-bar>
@@ -46,9 +46,17 @@ export default class AppNav extends Vue {
   mdiMagnify = mdiMagnify
 
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
+  @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
 
-  openLoginPanel () {
-    this.SET_LOGIN_PANEL(true)
+  openPanel (type: 'password' | 'register') {
+    switch (type) {
+      case 'register':
+        this.SET_REGISTER_PANEL(true)
+        break
+      case 'password':
+        this.SET_LOGIN_PANEL(true)
+        break
+    }
   }
 }
 </script>

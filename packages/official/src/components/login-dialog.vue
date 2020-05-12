@@ -40,21 +40,21 @@
         </template>
       </v-text-field>
     </v-form>
-    <v-btn block :height="44" color="#C30D23">
-      <span v-debounce="submit" :loading="submitStatus" class="white--text">登 录</span>
+    <v-btn v-debounce="submit" :loading="submitStatus" block :height="44" color="#C30D23">
+      <span class="white--text">登 录</span>
     </v-btn>
     <app-divider margin-top="25px" margin-bottom="15px">
       第三方账号登录
     </app-divider>
-    <div style="margin-bottom: 15px" class="text-center">
+    <div style="margin-bottom: 15px" class="text-center overline">
       暂未开放
     </div>
     <div style="color: #A0A0A0" class="text-center">
-      <span class="pointer" @click="switchSmsLogin">短信登录</span>
+      <span class="pointer" @click="switchPanel('sms')">短信登录</span>
       &ensp;|&ensp;
-      <span class="pointer">注册账号</span>
+      <span class="pointer" @click="switchPanel('register')">注册账号</span>
       &ensp;|&ensp;
-      <span class="pointer">忘记密码</span>
+      <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span>
     </div>
   </app-dialog>
 </template>
@@ -76,8 +76,9 @@ import { Mutation } from 'vuex-class'
 export default class AppDialogLoginComp extends Vue {
   @Model('input', { type: Boolean }) value: boolean
 
-  @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
+  @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
+  @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
 
   @Watch('dialogPanel')
   dialogPanelWatch (val: boolean) {
@@ -92,6 +93,10 @@ export default class AppDialogLoginComp extends Vue {
   valueWatch (val: boolean) {
     if (val === this.dialogPanel) { return }
     this.dialogPanel = val
+    if (val === true) {
+      // open init
+      this.getCaptcha()
+    }
   }
 
   @Emit()
@@ -126,13 +131,19 @@ export default class AppDialogLoginComp extends Vue {
 
   @Ref('login') readonly loginRef: any
 
-  created () {
-    this.getCaptcha()
-  }
-
-  switchSmsLogin () {
+  switchPanel (type: 'sms' | 'register' | 'retrieve') {
     this.dialogPanel = false
-    this.SET_LOGIN_SMS_PANEL(true)
+    switch (type) {
+      case 'retrieve':
+        this.SET_RETRIEVE_PANEL(true)
+        break
+      case 'register':
+        this.SET_REGISTER_PANEL(true)
+        break
+      case 'sms':
+        this.SET_LOGIN_SMS_PANEL(true)
+        break
+    }
   }
 
   async submit () {

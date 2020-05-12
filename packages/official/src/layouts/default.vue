@@ -8,6 +8,8 @@
     </v-content>
     <app-dialog-login :value="loginPanel" @close="SET_LOGIN_PANEL(false)" />
     <app-dialog-sms-login :value="loginSmsPanel" @close="SET_LOGIN_SMS_PANEL(false)" />
+    <app-dialog-register :value="registerPanel" @close="SET_REGISTER_PANEL(false)" />
+    <app-dialog-retrieve :value="retrievePanel" @close="SET_RETRIEVE_PANEL(false)" />
   </v-app>
 </template>
 
@@ -16,21 +18,29 @@ import { Vue, Component } from 'vue-property-decorator'
 import AppNav from '~/pages/layouts/app-nav.vue'
 import AppDialogLogin from '~/components/login-dialog.vue'
 import AppDialogSmsLogin from '~/components/sms-login-dialog.vue'
+import AppDialogRegister from '~/components/register-dialog.vue'
+import AppDialogRetrieve from '~/components/retrieve-dialog.vue'
 import { Getter, Mutation } from 'vuex-class'
 
 @Component({
   components: {
     AppNav,
     AppDialogLogin,
-    AppDialogSmsLogin
+    AppDialogSmsLogin,
+    AppDialogRegister,
+    AppDialogRetrieve
   }
 })
 export default class DefaultLayout extends Vue {
   @Getter('loginPanel', { namespace: 'context' }) loginPanel: boolean
   @Getter('loginSmsPanel', { namespace: 'context' }) loginSmsPanel: boolean
+  @Getter('registerPanel', { namespace: 'context' }) registerPanel: boolean
+  @Getter('retrievePanel', { namespace: 'context' }) retrievePanel: boolean
 
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
+  @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
+  @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
 }
 </script>
 

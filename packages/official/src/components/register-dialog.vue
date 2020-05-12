@@ -1,8 +1,8 @@
 <template>
   <app-dialog
     v-model="dialogPanel"
-    title="登录个人中心"
-    class="jhkz-dialog-login-sms"
+    title="注册客栈会员"
+    class="jhkz-dialog-login-register"
     @close="dialogPanel = false"
   >
     <v-form ref="login" :model="loginFormValid">
@@ -18,7 +18,7 @@
       <v-text-field
         v-model="loginForm.captcha"
         :rules="rules.captcha"
-        class="jhkz-dialog-login-sms__captcha-input"
+        class="jhkz-dialog-login-register__captcha-input"
         dense
         clearable
         background-color="#fff"
@@ -30,8 +30,8 @@
         </template>
       </v-text-field>
     </v-form>
-    <v-btn v-debounce="submit" :loading="submitStatus" block :height="44" color="#C30D23">
-      <span class="white--text">登 录</span>
+    <v-btn block :height="44" color="#C30D23">
+      <span v-debounce="submit" :loading="submitStatus" class="white--text">立即注册</span>
     </v-btn>
     <app-divider margin-top="25px" margin-bottom="15px">
       第三方账号登录
@@ -42,7 +42,7 @@
     <div style="color: #A0A0A0" class="text-center">
       <span class="pointer" @click="switchPanel('password')">密码登录</span>
       &ensp;|&ensp;
-      <span class="pointer" @click="switchPanel('register')">注册账号</span>
+      <span class="pointer" @click="switchPanel('sms')">短信登录</span>
       &ensp;|&ensp;
       <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span>
     </div>
@@ -58,14 +58,14 @@ import { Mutation } from 'vuex-class'
 import AppSendSmsBtn from '~/components/send-sms-btn.vue'
 
 @Component({
-  name: 'app-dialog-sms-login',
+  name: 'app-dialog-register',
   components: {
     AppDialog,
     AppDivider,
     AppSendSmsBtn
   }
 })
-export default class AppDialogLoginComp extends Vue {
+export default class AppDialogRegisterComp extends Vue {
   @Model('input', { type: Boolean }) value: boolean
 
   @Watch('dialogPanel')
@@ -89,7 +89,7 @@ export default class AppDialogLoginComp extends Vue {
   }
 
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
-  @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
+  @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
 
   dialogPanel = false
@@ -115,17 +115,17 @@ export default class AppDialogLoginComp extends Vue {
 
   @Ref('login') readonly loginRef: any
 
-  switchPanel (type: 'password' | 'register' | 'retrieve') {
+  switchPanel (type: 'sms' | 'password' | 'retrieve') {
     this.dialogPanel = false
     switch (type) {
       case 'retrieve':
         this.SET_RETRIEVE_PANEL(true)
         break
-      case 'register':
-        this.SET_REGISTER_PANEL(true)
-        break
       case 'password':
         this.SET_LOGIN_PANEL(true)
+        break
+      case 'sms':
+        this.SET_LOGIN_SMS_PANEL(true)
         break
     }
   }
@@ -145,7 +145,7 @@ export default class AppDialogLoginComp extends Vue {
 </script>
 
 <style lang="stylus">
-+block(dialog-login-sms) {
++block(dialog-login-register) {
   +element(captcha-input) {
     .v-input__append-outer {
       margin-top 0 !important
