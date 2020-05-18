@@ -10,6 +10,7 @@
     <app-dialog-sms-login :value="loginSmsPanel" @close="SET_LOGIN_SMS_PANEL(false)" />
     <app-dialog-register :value="registerPanel" @close="SET_REGISTER_PANEL(false)" />
     <app-dialog-retrieve :value="retrievePanel" @close="SET_RETRIEVE_PANEL(false)" />
+    <app-dialog-join :value="joinPanel" @close="SET_JOIN_PANEL(false)" />
   </v-app>
 </template>
 
@@ -20,6 +21,7 @@ import AppDialogLogin from '~/components/login-dialog.vue'
 import AppDialogSmsLogin from '~/components/sms-login-dialog.vue'
 import AppDialogRegister from '~/components/register-dialog.vue'
 import AppDialogRetrieve from '~/components/retrieve-dialog.vue'
+import AppDialogJoin from '~/components/join-dialog.vue'
 import { Getter, Mutation } from 'vuex-class'
 
 @Component({
@@ -28,7 +30,8 @@ import { Getter, Mutation } from 'vuex-class'
     AppDialogLogin,
     AppDialogSmsLogin,
     AppDialogRegister,
-    AppDialogRetrieve
+    AppDialogRetrieve,
+    AppDialogJoin
   }
 })
 export default class DefaultLayout extends Vue {
@@ -36,11 +39,23 @@ export default class DefaultLayout extends Vue {
   @Getter('loginSmsPanel', { namespace: 'context' }) loginSmsPanel: boolean
   @Getter('registerPanel', { namespace: 'context' }) registerPanel: boolean
   @Getter('retrievePanel', { namespace: 'context' }) retrievePanel: boolean
+  @Getter('joinPanel', { namespace: 'context' }) joinPanel: boolean
 
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
+  @Mutation('SET_JOIN_PANEL', { namespace: 'context' }) SET_JOIN_PANEL: Function
+
+  created () {
+    // Temporary until it gets fixed
+    this.$vuetify.theme.themes.light.primary = '#C30D23'
+    this.$vuetify.theme.applyVueMeta23()
+  }
+
+  mounted () {
+    this.$meta().refresh()
+  }
 }
 </script>
 

@@ -2,7 +2,7 @@
   <div class="jhkz-apply-join text-center">
     <h2>综合网游售后服务平台</h2>
     <h4>简单 | 专业 | 便捷</h4>
-    <v-btn class="jhkz-apply-join__btn" :width="275" :height="55" color="#C30D23">
+    <v-btn class="jhkz-apply-join__btn" :width="275" :height="55" color="#C30D23" @click="SET_JOIN_PANEL(true)">
       <span class="headline" style="color: #fff;">申请入驻</span>
     </v-btn>
   </div>
@@ -10,11 +10,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class'
 
 @Component({
   name: 'home-apply-join'
 })
-export default class HomeApplyJoinComp extends Vue {}
+export default class HomeApplyJoinComp extends Vue {
+  @Mutation('SET_JOIN_PANEL', { namespace: 'context' }) SET_JOIN_PANEL: Function
+}
 </script>
 
 <style lang="stylus" scoped>

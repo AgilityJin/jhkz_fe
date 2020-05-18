@@ -6,7 +6,7 @@
           <div class="jhkz-services__logo" />
         </div>
         <div class="jhkz-services__item-box">
-          <div v-for="(item, index) in 8" :key="index" class="jhkz-services__item" :class="`jhkz-services__item_${item}`" @click="openChat" />
+          <div v-for="(item, index) in services" :key="index" class="jhkz-services__item" :class="`jhkz-services__item_${index + 1}`" @click="item.callback" />
         </div>
       </div>
     </app-container>
@@ -15,15 +15,70 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CustomerServiceQQ } from '~/config'
+import { CUSTOMER_SERVICE_QQ, APPEARANCE_CONSIGNMENT_QQ, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL } from '~/config'
 import { openQqChat } from '~/utils'
 
 @Component({
   name: 'home-services'
 })
 export default class HomeServicesComp extends Vue {
-  openChat () {
-    openQqChat(CustomerServiceQQ)
+  services = [
+    {
+      name: 'PVP日常代练',
+      callback: () => {
+        this.openChat(CUSTOMER_SERVICE_QQ)
+      }
+    },
+    {
+      name: 'PVE日常代练',
+      callback: () => {
+        this.openChat(CUSTOMER_SERVICE_QQ)
+      }
+    },
+    {
+      name: '竞技场代练',
+      callback: () => {
+        this.openChat(CUSTOMER_SERVICE_QQ)
+      }
+    },
+    {
+      name: '资历代练',
+      callback: () => {
+        this.openChat(CUSTOMER_SERVICE_QQ)
+      }
+    },
+    {
+      name: '金币售卖',
+      callback: () => {
+        this.openUrl(GOLD_CONSIGNMENT_URL)
+      }
+    },
+    {
+      name: '账号代售',
+      callback: () => {
+        this.openUrl(ACCOUNT_CONSIGNMENT_URL)
+      }
+    },
+    {
+      name: '外观代售',
+      callback: () => {
+        this.openChat(APPEARANCE_CONSIGNMENT_QQ)
+      }
+    },
+    {
+      name: '外观代抢',
+      callback: () => {
+        this.openChat(CUSTOMER_SERVICE_QQ)
+      }
+    }
+  ]
+
+  openUrl (url: string) {
+    window.open(url, 'blank')
+  }
+
+  openChat (targetQq: string | number) {
+    openQqChat(targetQq)
   }
 }
 </script>

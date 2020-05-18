@@ -80,7 +80,7 @@ $logo := '../../assets/images/logo-1.png';
   +element(btn)
     color: #666666
     &:hover
-      color #1976d2
+      color #C30D23
   +element(tabs)
     width auto
   +element(toolbar)

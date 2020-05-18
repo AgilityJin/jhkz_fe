@@ -10,17 +10,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 export default class MyOrderPage extends Vue {
-  @Prop(String) status: 'in-progress' | 'finished'
-
-  @Watch('status', { immediate: true })
-  statusWatch (val: 'in-progress' | 'finished') {
-    // if (val === this.status) { return }
-    console.log(val)
-  }
 }
 </script>
 

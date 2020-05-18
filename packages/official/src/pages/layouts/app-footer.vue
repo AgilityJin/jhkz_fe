@@ -14,19 +14,19 @@
           <v-divider style="border-color: #494949;" />
           <v-row>
             <v-col>
-              <div class="pointer" @click="openChat">
+              <div class="pointer" @click="openChat(APPEARANCE_CONSIGNMENT_QQ)">
                 外观交易推荐
                 <span class="jhkz-footer__tip">
                   （云间小舍）
                 </span>
               </div>
-              <div class="pointer" @click="openChat">
+              <div class="pointer" @click="openUrl(ACCOUNT_CONSIGNMENT_URL)">
                 账号代售推荐
                 <span class="jhkz-footer__tip">
                   （风暴代售）
                 </span>
               </div>
-              <div class="pointer" @click="openChat">
+              <div class="pointer" @click="openUrl(GOLD_CONSIGNMENT_URL)">
                 游戏金币推荐
                 <span class="jhkz-footer__tip">
                   （老宅金币）
@@ -35,7 +35,7 @@
             </v-col>
             <v-col>
               <div>
-                <v-btn :width="98" :height="28" color="#C30D23" @click="openChat">
+                <v-btn :width="98" :height="28" color="#C30D23" @click="openChat(CUSTOMER_SERVICE_QQ)">
                   <v-icon color="#fff" left>
                     {{ mdiQqchat }}
                   </v-icon>
@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CustomerServiceQQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL } from '~/config'
+import { CUSTOMER_SERVICE_QQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL, APPEARANCE_CONSIGNMENT_QQ } from '~/config'
 import { mdiQqchat } from '@mdi/js'
 import { openQqChat } from '~/utils'
 
@@ -79,9 +79,17 @@ export default class AppNav extends Vue {
   TECHNICAL_SUPPORT_EMAIL = TECHNICAL_SUPPORT_EMAIL
   ICP_URL = ICP_URL
   mdiQqchat = mdiQqchat
+  CUSTOMER_SERVICE_QQ = CUSTOMER_SERVICE_QQ
+  ACCOUNT_CONSIGNMENT_URL = ACCOUNT_CONSIGNMENT_URL
+  GOLD_CONSIGNMENT_URL = GOLD_CONSIGNMENT_URL
+  APPEARANCE_CONSIGNMENT_QQ = APPEARANCE_CONSIGNMENT_QQ
 
-  openChat () {
-    openQqChat(CustomerServiceQQ)
+  openUrl (url: string) {
+    window.open(url, 'blank')
+  }
+
+  openChat (targetQq: string | number) {
+    openQqChat(targetQq)
   }
 }
 </script>

@@ -15,6 +15,7 @@ declare module 'vue/types/vue' {
     options: {
       name: string
     }
+    $vuetify: any
   }
   interface VueConstructor {
     options: {

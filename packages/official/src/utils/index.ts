@@ -49,7 +49,7 @@ export function getOS () {
  * @name 打开目标qq会话界面
  * @param qq 待开启的会话目标qq号
  */
-export function openQqChat (qq: string) {
+export function openQqChat (qq: string | number) {
   const env = getOS()
   const url = env.pc
     ? `http://wpa.qq.com/msgrd?v=3&uin=${qq}&site=在线客服&menu=yes`
@@ -57,6 +57,7 @@ export function openQqChat (qq: string) {
   window.open(url)
 }
 
+// TODO: test
 export function shareQq () {
   const params: any = {
     url: 'https://baidu.com',

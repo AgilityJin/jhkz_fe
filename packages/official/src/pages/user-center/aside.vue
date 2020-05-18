@@ -2,41 +2,21 @@
   <v-card class="jhkz-user-center__aside">
     <v-navigation-drawer>
       <v-list dense nav>
-        <v-list-group :prepend-icon="mdiTextBoxSearchOutline" value="true">
-          <template #activator>
-            <v-list-item-content>
-              我的订单
-            </v-list-item-content>
-          </template>
+        <v-list-item-group v-model="item" color="primary">
           <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
             link
-            :to="{
-              name: 'myOrder',
-              params: {
-                status: 'in-progress'
-              }
-            }"
+            :to="{ name: item.routeName }"
           >
-            <v-list-item-icon />
+            <v-list-item-icon>
+              <v-icon v-text="item.icon" />
+            </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>&emsp;代练中</v-list-item-title>
+              <v-list-item-title v-text="item.text" />
             </v-list-item-content>
           </v-list-item>
-          <v-list-item
-            link
-            :to="{
-              name: 'myOrder',
-              params: {
-                status: 'finished'
-              }
-            }"
-          >
-            <v-list-item-icon />
-            <v-list-item-content>
-              <v-list-item-title>&emsp;已完成</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-group>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
   </v-card>
@@ -44,13 +24,18 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mdiTextBoxSearchOutline } from '@mdi/js'
+import { mdiTextBoxSearchOutline, mdiAccountOutline } from '@mdi/js'
 
 @Component({
   name: 'user-center-aside'
 })
 export default class UserCenterAsideComp extends Vue {
   mdiTextBoxSearchOutline = mdiTextBoxSearchOutline
+  item = 0
+  items = [
+    { text: '订单查询', icon: mdiTextBoxSearchOutline, routeName: 'userCenterMyOrder' },
+    { text: '个人设置', icon: mdiAccountOutline, routeName: 'userCenterUser' }
+  ]
 }
 </script>
 

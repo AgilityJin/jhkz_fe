@@ -4,7 +4,8 @@ export const state = () => ({
   loginPanel: false,
   loginSmsPanel: false,
   registerPanel: false,
-  retrievePanel: false
+  retrievePanel: false,
+  joinPanel: false
 })
 type CurrentState = ReturnType<typeof state>
 
@@ -12,7 +13,8 @@ export const getters: GetterTree<CurrentState, CurrentState> = {
   loginPanel: state => state.loginPanel,
   loginSmsPanel: state => state.loginSmsPanel,
   registerPanel: state => state.registerPanel,
-  retrievePanel: state => state.retrievePanel
+  retrievePanel: state => state.retrievePanel,
+  joinPanel: state => state.joinPanel
 }
 
 export const mutations: MutationTree<CurrentState> = {
@@ -27,6 +29,9 @@ export const mutations: MutationTree<CurrentState> = {
   },
   SET_RETRIEVE_PANEL: (state, retrievePanel: boolean) => {
     state.retrievePanel = retrievePanel
+  },
+  SET_JOIN_PANEL: (state, joinPanel: boolean) => {
+    state.joinPanel = joinPanel
   }
 }
 
