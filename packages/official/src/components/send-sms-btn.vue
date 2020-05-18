@@ -7,11 +7,15 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import { asyncTask } from '@helper-gdp/utils'
+import { phoneNumReg } from '../utils/regular'
 
 @Component({
   name: 'app-send-sms-btn'
 })
 export default class AppSendSmsBtn extends Vue {
+  @Prop(String) phone: string
+  @Prop(String) type: 'login' | 'register'
   @Prop({ type: String, default: '发送验证码' }) text?: string
 
   sendStatus = false
@@ -31,8 +35,20 @@ export default class AppSendSmsBtn extends Vue {
     timer()
   }
 
-  sendSmsCaptcha () {
+  async sendSmsCaptcha () {
+    if (!phoneNumReg.test(this.phone)) {
+      this.$msg.warning('请提供正确的手机号码')
+      return
+    }
     this.sendStatus = true
+    const [err] = await asyncTask(this.$api.sendSms({
+      phone: this.phone,
+      type: this.type
+    }))
+    if (err) {
+      this.sendStatus = false
+      return
+    }
     this.modifierText()
   }
 }

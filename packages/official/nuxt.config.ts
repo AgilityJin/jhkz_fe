@@ -95,10 +95,11 @@ const NuxtConfig: Configuration = {
     input: '~/assets/svg/'
   },
   proxy: {
-    '/api': {
-      target: 'https://jianghukezhan.vip',
+    '/api/official': {
+      target: 'http://localhost:8081',
+      // target: 'https://jianghukezhan.vip',
       pathRewrite: {
-        // '^/api': '/' // 需要rewrite的, 路径重写
+        '^/api/official': '/' // 需要rewrite的, 路径重写
       }
     }
   }

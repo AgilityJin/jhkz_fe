@@ -175,11 +175,11 @@
 </template>
 
 <script lang="ts">
-import { ACCOUNT_MAX_LENGTH, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '../../../config/limit-length'
-import { required, maxLength, minLength, isPhone, refValidate, refReset } from '../../../utils/validate'
 import { Vue, Component } from 'vue-property-decorator'
 import debounce from 'lodash/debounce'
 import { mdiAccount, mdiOnepassword, mdiCellphone } from '@mdi/js'
+import { required, maxLength, minLength, isPhone, refValidate, refReset } from '../../../utils/validate'
+import { ACCOUNT_MAX_LENGTH, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '../../../config/limit-length'
 import { Pagination, Confirm } from '~/components'
 import { GENDER, GENDER_MAP } from '~/config/constants'
 

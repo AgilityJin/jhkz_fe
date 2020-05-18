@@ -67,8 +67,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CUSTOMER_SERVICE_QQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL, APPEARANCE_CONSIGNMENT_QQ } from '~/config'
 import { mdiQqchat } from '@mdi/js'
+import { CUSTOMER_SERVICE_QQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL, APPEARANCE_CONSIGNMENT_QQ } from '~/config'
 import { openQqChat } from '~/utils'
 
 @Component({

@@ -16,13 +16,13 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Getter, Mutation } from 'vuex-class'
 import AppNav from '~/pages/layouts/app-nav.vue'
 import AppDialogLogin from '~/components/login-dialog.vue'
 import AppDialogSmsLogin from '~/components/sms-login-dialog.vue'
 import AppDialogRegister from '~/components/register-dialog.vue'
 import AppDialogRetrieve from '~/components/retrieve-dialog.vue'
 import AppDialogJoin from '~/components/join-dialog.vue'
-import { Getter, Mutation } from 'vuex-class'
 
 @Component({
   components: {

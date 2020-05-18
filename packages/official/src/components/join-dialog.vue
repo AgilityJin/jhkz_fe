@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
-import { AppDialog } from '.'
 import { Vue, Component, Model, Watch, Emit } from 'vue-property-decorator'
+import { AppDialog } from '.'
 import { CUSTOMER_SERVICE_QQ } from '~/config'
 import { openQqChat } from '~/utils'
 

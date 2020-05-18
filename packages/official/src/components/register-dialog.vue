@@ -26,12 +26,12 @@
         label="短信验证码"
       >
         <template v-slot:append-outer>
-          <app-send-sms-btn />
+          <app-send-sms-btn :phone="loginForm.phone" type="register" />
         </template>
       </v-text-field>
     </v-form>
-    <v-btn block :height="44" color="#C30D23">
-      <span v-debounce="submit" :loading="submitStatus" class="white--text">立即注册</span>
+    <v-btn v-debounce="submit" :loading="submitStatus" block :height="44" color="#C30D23">
+      <span class="white--text">立即注册</span>
     </v-btn>
     <app-divider margin-top="25px" margin-bottom="15px">
       第三方账号登录
@@ -50,11 +50,11 @@
 </template>
 
 <script lang="ts">
-import { required, isPhone, length } from '../utils/validate'
-import { AppDialog, AppDivider } from '.'
 import { Vue, Component, Model, Watch, Emit, Ref } from 'vue-property-decorator'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
+import { required, isPhone, length } from '../utils/validate'
+import { AppDialog, AppDivider } from '.'
 import AppSendSmsBtn from '~/components/send-sms-btn.vue'
 
 @Component({
@@ -134,12 +134,25 @@ export default class AppDialogRegisterComp extends Vue {
     const validate = this.loginRef.validate()
     if (!validate) { return }
     this.submitStatus = true
-    // FIXME:
-    const [err, userInfo] = await asyncTask(this.$api.captcha())
+    const [err, userInfo] = await asyncTask(this.$api.smsRegister({
+      phone: this.loginForm.phone,
+      smsCode: Number(this.loginForm.captcha)
+    }))
     if (err) { return }
-    this.$msg.globalSuccess('登录成功')
+    this.$msg.globalSuccess('注册成功')
     this.submitStatus = false
+    this.dialogPanel = false
     console.log(userInfo)
+    // FIXME: 存储用户信息 msg无法触发弹窗消息
+    // avatar: null
+    // avatarCoverUrl: null
+    // birthday: null
+    // description: null
+    // email: null
+    // gender: null
+    // nickname: null
+    // phone: "17621667884"
+    // uuid: "a9a1ed41-00b8-4f9d-bdf0-3f9de05cad2b"
   }
 }
 </script>

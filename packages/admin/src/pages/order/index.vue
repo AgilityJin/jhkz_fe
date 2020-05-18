@@ -321,15 +321,15 @@
 </template>
 
 <script lang="ts">
-import { refValidate, refReset, isPhone, length, required } from '../../utils/validate'
-import { ORDER_LENGTH } from '../../config/limit-length'
-import { IGameCategories } from '../../interface'
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiCalendarRange, mdiFolderMultipleImage } from '@mdi/js'
 import debounce from 'lodash/debounce'
 import { asyncTask } from '@helper-gdp/utils'
 import { format, parseISO } from 'date-fns'
 import { Action } from 'vuex-class'
+import { IGameCategories } from '../../interface'
+import { ORDER_LENGTH } from '../../config/limit-length'
+import { refValidate, refReset, isPhone, length, required } from '../../utils/validate'
 import { Pagination, Confirm } from '~/components'
 import { SYNOPSIS_MAX_LENGTH } from '~/config/limit-length'
 import { ORDER_STATUS_MAP, ORDER_STATUS } from '~/config/constants'

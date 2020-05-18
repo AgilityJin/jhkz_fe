@@ -50,11 +50,11 @@
 </template>
 
 <script lang="ts">
-import { required, isPhone, length } from '../utils/validate'
-import { AppDialog, AppDivider } from '.'
 import { Vue, Component, Model, Watch, Emit, Ref } from 'vue-property-decorator'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
+import { required, isPhone, length } from '../utils/validate'
+import { AppDialog, AppDivider } from '.'
 import AppSendSmsBtn from '~/components/send-sms-btn.vue'
 
 @Component({
