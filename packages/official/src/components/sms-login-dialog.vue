@@ -26,7 +26,7 @@
         label="短信验证码"
       >
         <template v-slot:append-outer>
-          <app-send-sms-btn />
+          <app-send-sms-btn :phone="loginForm.phone" type="login" />
         </template>
       </v-text-field>
     </v-form>
@@ -54,6 +54,8 @@ import { Vue, Component, Model, Watch, Emit, Ref } from 'vue-property-decorator'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
 import { required, isPhone, length } from '../utils/validate'
+import { setStorage } from '../utils'
+import { CONTEXT_KEY } from '../config'
 import { AppDialog, AppDivider } from '.'
 import AppSendSmsBtn from '~/components/send-sms-btn.vue'
 
@@ -91,11 +93,11 @@ export default class AppDialogLoginComp extends Vue {
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
+  @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
 
   dialogPanel = false
   loginFormValid = false
   submitStatus = false
-  captcha = null
 
   loginForm = {
     phone: '',
@@ -134,12 +136,16 @@ export default class AppDialogLoginComp extends Vue {
     const validate = this.loginRef.validate()
     if (!validate) { return }
     this.submitStatus = true
-    // FIXME:
-    const [err, userInfo] = await asyncTask(this.$api.captcha())
+    const [err, userInfo] = await asyncTask(this.$api.smsLogin({
+      phone: this.loginForm.phone,
+      smsCode: Number(this.loginForm.captcha)
+    }))
+    this.submitStatus = false
     if (err) { return }
     this.$msg.globalSuccess('登录成功')
-    this.submitStatus = false
-    console.log(userInfo)
+    setStorage(CONTEXT_KEY, userInfo)
+    this.SET_USER_INFO(userInfo)
+    this.dialogPanel = false
   }
 }
 </script>

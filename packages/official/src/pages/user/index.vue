@@ -95,6 +95,7 @@
           </div>
           <div class="jhkz-user__list__item__content">
             手机
+            <div>当前绑定手机：{{ form.phone }}</div>
           </div>
           <div class="jhkz-user__list__item__btn">
             <v-btn outlined color="#BFBFBF">
@@ -129,6 +130,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiPlus } from '@mdi/js'
+import { Getter } from 'vuex-class'
 
 @Component
 export default class UserPage extends Vue {
@@ -138,7 +140,20 @@ export default class UserPage extends Vue {
   themePrimary = this.$vuetify.theme.themes.light.primary
   form = {
     nickname: '',
-    gender: -1
+    gender: -1,
+    phone: ''
+  }
+
+  @Getter('userInfo', { namespace: 'context' }) userInfo: any
+
+  created () {
+    if (this.userInfo) {
+      this.form = {
+        nickname: this.userInfo.nickname,
+        gender: this.userInfo.gender || -1,
+        phone: this.userInfo.phone
+      }
+    }
   }
 
   allowedBirthday (val: string) {

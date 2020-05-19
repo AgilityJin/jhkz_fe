@@ -26,9 +26,42 @@
           type="text"
           :append-icon="mdiMagnify"
         />
-        <a class="jhkz-nav__btn" @click="openPanel('password')">登录</a>
-        |
-        <a class="jhkz-nav__btn" @click="openPanel('register')">注册</a>
+        {{ userInfo && userInfo.nickname || '' }}
+        <v-menu
+          v-if="userInfo"
+          left
+          bottom
+        >
+          <template v-slot:activator="{ on }">
+            <v-avatar class="pointer" color="indigo" v-on="on">
+              <img
+                v-if="userInfo.avatarCoverUrl"
+                :src="userInfo.avatarCoverUrl"
+                :alt="userInfo.nickname"
+              >
+              <v-icon v-else dark>
+                mdi-account-circle
+              </v-icon>
+            </v-avatar>
+          </template>
+
+          <v-list>
+            <v-list-item
+              :disabled="$route.name === 'userCenterUser'"
+              @click="$router.push({ name: 'userCenterUser' })"
+            >
+              <v-list-item-title>个人设置</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>退出登录</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <div v-else style="display: inline-block;">
+          <a class="jhkz-nav__btn" @click="openPanel('password')">登录</a>
+          |
+          <a class="jhkz-nav__btn" @click="openPanel('register')">注册</a>
+        </div>
       </div>
     </div>
   </v-app-bar>
@@ -36,15 +69,17 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mdiMagnify } from '@mdi/js'
-import { Mutation } from 'vuex-class'
+import { mdiMagnify, mdiAccountOutline } from '@mdi/js'
+import { Mutation, Getter } from 'vuex-class'
 
 @Component({
   name: 'app-nav'
 })
 export default class AppNav extends Vue {
   mdiMagnify = mdiMagnify
+  mdiAccountOutline = mdiAccountOutline
 
+  @Getter('userInfo', { namespace: 'context' }) userInfo: any
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
 

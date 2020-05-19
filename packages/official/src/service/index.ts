@@ -12,3 +12,8 @@ export const smsRegister = {
   url: '/login/register',
   method: 'post'
 }
+
+export const smsLogin = {
+  url: '/login/sms',
+  method: 'post'
+}

@@ -25,11 +25,11 @@ const NuxtConfig: Configuration = {
     '~/assets/styles/global.styl'
   ],
   plugins: [
+    '~/plugins/api.plugin.ts',
+    '~/plugins/message.plugin.ts',
     '~/plugins/directives.plugin.ts',
     '~/plugins/filters.plugin.ts',
-    '~/plugins/components.plugin.ts',
-    '~/plugins/api.plugin.ts',
-    '~/plugins/message.plugin.ts'
+    '~/plugins/components.plugin.ts'
   ],
   // SSR need active
   generate: {
@@ -62,7 +62,15 @@ const NuxtConfig: Configuration = {
     },
     babel: {
       // 按需加载配置
-      plugins: []
+      plugins: [
+        [
+          'component',
+          {
+            libraryName: 'element-ui',
+            styleLibraryName: 'theme-chalk'
+          }
+        ]
+      ]
     }
   },
   // plugins config

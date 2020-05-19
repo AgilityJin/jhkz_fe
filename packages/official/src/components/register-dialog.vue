@@ -54,8 +54,10 @@ import { Vue, Component, Model, Watch, Emit, Ref } from 'vue-property-decorator'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
 import { required, isPhone, length } from '../utils/validate'
+import { setStorage } from '../utils'
 import { AppDialog, AppDivider } from '.'
 import AppSendSmsBtn from '~/components/send-sms-btn.vue'
+import { CONTEXT_KEY } from '~/config'
 
 @Component({
   name: 'app-dialog-register',
@@ -91,6 +93,7 @@ export default class AppDialogRegisterComp extends Vue {
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
+  @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
 
   dialogPanel = false
   loginFormValid = false
@@ -138,21 +141,12 @@ export default class AppDialogRegisterComp extends Vue {
       phone: this.loginForm.phone,
       smsCode: Number(this.loginForm.captcha)
     }))
+    this.submitStatus = false
     if (err) { return }
     this.$msg.globalSuccess('注册成功')
-    this.submitStatus = false
+    setStorage(CONTEXT_KEY, userInfo)
+    this.SET_USER_INFO(userInfo)
     this.dialogPanel = false
-    console.log(userInfo)
-    // FIXME: 存储用户信息 msg无法触发弹窗消息
-    // avatar: null
-    // avatarCoverUrl: null
-    // birthday: null
-    // description: null
-    // email: null
-    // gender: null
-    // nickname: null
-    // phone: "17621667884"
-    // uuid: "a9a1ed41-00b8-4f9d-bdf0-3f9de05cad2b"
   }
 }
 </script>

@@ -1,11 +1,14 @@
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
+import { getStorage } from '~/utils'
+import { CONTEXT_KEY } from '~/config'
 
 export const state = () => ({
   loginPanel: false,
   loginSmsPanel: false,
   registerPanel: false,
   retrievePanel: false,
-  joinPanel: false
+  joinPanel: false,
+  userInfo: null
 })
 type CurrentState = ReturnType<typeof state>
 
@@ -14,7 +17,14 @@ export const getters: GetterTree<CurrentState, CurrentState> = {
   loginSmsPanel: state => state.loginSmsPanel,
   registerPanel: state => state.registerPanel,
   retrievePanel: state => state.retrievePanel,
-  joinPanel: state => state.joinPanel
+  joinPanel: state => state.joinPanel,
+  userInfo: (state) => {
+    if (state.userInfo) { return state.userInfo }
+    const context = getStorage(CONTEXT_KEY)
+    console.log(context)
+    if (context) { return context }
+    return null
+  }
 }
 
 export const mutations: MutationTree<CurrentState> = {
@@ -32,6 +42,9 @@ export const mutations: MutationTree<CurrentState> = {
   },
   SET_JOIN_PANEL: (state, joinPanel: boolean) => {
     state.joinPanel = joinPanel
+  },
+  SET_USER_INFO: (state, userInfo: any) => {
+    state.userInfo = userInfo
   }
 }
 
