@@ -17,6 +17,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { Getter, Mutation } from 'vuex-class'
+import { getStorage, clearStorage } from '../utils'
+import { CONTEXT_KEY } from '../config'
 import AppNav from '~/pages/layouts/app-nav.vue'
 import AppDialogLogin from '~/components/login-dialog.vue'
 import AppDialogSmsLogin from '~/components/sms-login-dialog.vue'
@@ -40,14 +42,26 @@ export default class DefaultLayout extends Vue {
   @Getter('registerPanel', { namespace: 'context' }) registerPanel: boolean
   @Getter('retrievePanel', { namespace: 'context' }) retrievePanel: boolean
   @Getter('joinPanel', { namespace: 'context' }) joinPanel: boolean
+  @Getter('userInfo', { namespace: 'context' }) userInfo: any
 
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
   @Mutation('SET_JOIN_PANEL', { namespace: 'context' }) SET_JOIN_PANEL: Function
+  @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
+
+  authInit () {
+    const ctx = this.userInfo || getStorage(CONTEXT_KEY)
+    if (!ctx) { return }
+    if (!ctx.expiresIn || Date.now() >= ctx.expiresIn) {
+      this.SET_USER_INFO(null)
+      clearStorage(CONTEXT_KEY)
+    }
+  }
 
   created () {
+    this.authInit()
     // Temporary until it gets fixed
     this.$vuetify.theme.themes.light.primary = '#C30D23'
     this.$vuetify.theme.applyVueMeta23()

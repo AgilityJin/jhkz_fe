@@ -20,6 +20,7 @@ import UserCenterMain from './main.vue'
   head: {
     title: '用户中心'
   },
+  middleware: ['auth'],
   components: {
     UserCenterAside,
     UserCenterMain

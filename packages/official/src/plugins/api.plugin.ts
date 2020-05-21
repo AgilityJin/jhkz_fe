@@ -6,7 +6,7 @@ import { APP_ENV, CONTEXT_KEY } from '~/config'
 import * as Svc from '~/service'
 import { getStorage } from '~/utils'
 
-export const Api = new Request({
+export const Api = new Request<typeof Svc>({
   config: {
     baseURL: APP_ENV.apiHost,
     headers: {

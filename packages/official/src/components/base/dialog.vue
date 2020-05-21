@@ -27,7 +27,7 @@ import { Vue, Component, Prop, Model, Watch, Emit } from 'vue-property-decorator
 export default class AppDialogComp extends Vue {
   @Model('input', { type: Boolean }) value: boolean
   @Prop({ type: Number, default: 1 }) titleBgIndex?: number
-  @Prop({ type: [Number, String], default: '400' }) maxWidth?: number | string
+  @Prop({ type: [Number, String], default: 400 }) maxWidth?: number | string
   @Prop({ type: String, default: '' }) title?: string
   @Prop({ type: String, default: '' }) subtitle?: string
 

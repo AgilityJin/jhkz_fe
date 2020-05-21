@@ -18,6 +18,7 @@
       </v-tabs>
       <div class="jhkz-nav__aside">
         <v-text-field
+          v-if="false"
           background-color="#e1e1e0"
           placeholder="游戏、代练名称"
           rounded

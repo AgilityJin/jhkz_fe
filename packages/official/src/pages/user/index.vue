@@ -81,7 +81,7 @@
             密码
           </div>
           <div class="jhkz-user__list__item__btn">
-            <v-btn outlined color="#BFBFBF">
+            <v-btn outlined color="#BFBFBF" @click="passwordPopup = true">
               <v-icon :color="themePrimary">
                 {{ mdiPlus }}
               </v-icon>
@@ -95,10 +95,10 @@
           </div>
           <div class="jhkz-user__list__item__content">
             手机
-            <div>当前绑定手机：{{ form.phone }}</div>
+            <div>手机绑定为：{{ form.phone | maskString({ start: 3, end: 7 }) }}</div>
           </div>
           <div class="jhkz-user__list__item__btn">
-            <v-btn outlined color="#BFBFBF">
+            <v-btn disabled outlined color="#BFBFBF">
               <v-icon :color="themePrimary">
                 {{ mdiPlus }}
               </v-icon>
@@ -112,9 +112,15 @@
           </div>
           <div class="jhkz-user__list__item__content">
             邮箱
+            <div v-if="form.email">
+              邮箱绑定为：{{ form.email | maskString({ start: 4, end: form.email.length -4 }) }}
+            </div>
+            <div v-else>
+              尚未绑定
+            </div>
           </div>
           <div class="jhkz-user__list__item__btn">
-            <v-btn outlined color="#BFBFBF">
+            <v-btn disabled outlined color="#BFBFBF">
               <v-icon :color="themePrimary">
                 {{ mdiPlus }}
               </v-icon>
@@ -124,6 +130,37 @@
         </div>
       </div>
     </v-col>
+
+    <!-- 密码修改popup -->
+    <app-popup v-model="passwordPopup" :content-style="{ textAlign: 'center' }" :max-width="600" title="密码修改">
+      <div class="jhkz-user__dialog-content">
+        <p>您的手机号：<span class="font-weight-bold">{{ form.phone | maskString({ start: 3, end: 7 }) }}</span></p>
+        <v-form ref="passwordEdit" :model="passwordFormValid">
+          <v-text-field
+            v-model="passwordForm.password"
+            dense
+            outlined
+            label="设置登录密码"
+            clearable
+          />
+          <v-text-field
+            v-model="passwordForm.captcha"
+            class="jhkz-user-dialog__captcha-input"
+            dense
+            outlined
+            label="短信验证码"
+            clearable
+          >
+            <template v-slot:append-outer>
+              <app-send-sms-btn :phone="form.phone" type="reset" />
+            </template>
+          </v-text-field>
+        </v-form>
+        <v-btn block color="#C30D23">
+          <span class="white--text">确 定</span>
+        </v-btn>
+      </div>
+    </app-popup>
   </v-row>
 </template>
 
@@ -131,17 +168,31 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiPlus } from '@mdi/js'
 import { Getter } from 'vuex-class'
+import { AppPopup } from '~/components'
+import AppSendSmsBtn from '~/components/send-sms-btn.vue'
 
-@Component
+@Component({
+  components: {
+    AppPopup,
+    AppSendSmsBtn
+  }
+})
 export default class UserPage extends Vue {
   formValid = false
   birthdayMenu = false
+  passwordPopup = false
+  passwordFormValid = false
   mdiPlus = mdiPlus
   themePrimary = this.$vuetify.theme.themes.light.primary
   form = {
     nickname: '',
     gender: -1,
     phone: ''
+  }
+
+  passwordForm = {
+    captcha: '',
+    password: ''
   }
 
   @Getter('userInfo', { namespace: 'context' }) userInfo: any
@@ -162,6 +213,16 @@ export default class UserPage extends Vue {
 }
 </script>
 
+<style lang="stylus">
++block(user-dialog) {
+  +element(captcha-input) {
+    .v-input__append-outer {
+      margin-top 0 !important
+    }
+  }
+}
+</style>
+
 <style lang="stylus" scoped>
 $password := '../../assets/images/password.png'
 $phone := '../../assets/images/phone.png'
@@ -169,6 +230,9 @@ $email := '../../assets/images/email.png'
 
 +block(user)
   padding  33px 33px 33px 40px
+  +element(dialog-content)
+    display inline-block
+    width 266px
   +element(avatar)
     margin-bottom 33px
   +element(list)

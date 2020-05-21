@@ -1,4 +1,5 @@
 import Vue from 'vue'
-import { formatDate } from '~/filters'
+import { formatDate, maskString } from '~/filters'
 
 Vue.filter('formatDate', formatDate)
+Vue.filter('maskString', maskString)
