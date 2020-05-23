@@ -1,3 +1,5 @@
+import { createEnum } from '@helper-gdp/utils'
+
 export const APPEARANCE_CONSIGNMENT_QQ = '996610379' // 外观代售qq
 
 export const CUSTOMER_SERVICE_QQ = '194703103' // 客服qq
@@ -11,3 +13,24 @@ export const ICP = '鲁ICP备20007448号' // 备案号
 export const TECHNICAL_SUPPORT_EMAIL = 'Agility_Jin@outlook.com' // 技术支持邮箱
 
 export const ICP_URL = 'http://www.beian.miit.gov.cn'
+
+export const ORDER_STATUS = [
+  {
+    value: 'not_started',
+    text: '未开始'
+  },
+  {
+    value: 'in_progress',
+    text: '进行中'
+  },
+  {
+    value: 'paused',
+    text: '已暂停'
+  },
+  {
+    value: 'finished',
+    text: '完成'
+  }
+]
+
+export const ORDER_STATUS_MAP = createEnum(ORDER_STATUS, 'value', 'text')

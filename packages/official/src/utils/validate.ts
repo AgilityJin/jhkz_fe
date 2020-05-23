@@ -1,4 +1,4 @@
-import { phoneNumReg } from './regular'
+import { phoneNumReg, numReg } from './regular'
 
 export const required = (errorMsg = 'value is required') => (value: any) => !!value || errorMsg
 
@@ -20,4 +20,9 @@ export const length = (length: number, errorMsg = '') => (value: string) => {
 export const isPhone = (errorMsg = '') => (value: string) => {
   if (!value) { return true }
   return (phoneNumReg.test(value)) || errorMsg
+}
+
+export const isNum = (errorMsg = '') => (value: string) => {
+  if (!value) { return true }
+  return (numReg.test(value)) || errorMsg
 }

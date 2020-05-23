@@ -53,8 +53,8 @@
       <span class="pointer" @click="switchPanel('sms')">短信登录</span>
       &ensp;|&ensp;
       <span class="pointer" @click="switchPanel('register')">注册账号</span>
-      &ensp;|&ensp;
-      <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span>
+      <!-- &ensp;|&ensp;
+      <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span> -->
     </div>
   </app-dialog>
 </template>
@@ -63,7 +63,10 @@
 import { Vue, Component, Model, Watch, Emit, Ref } from 'vue-property-decorator'
 import { asyncTask } from '@helper-gdp/utils'
 import { Mutation } from 'vuex-class'
-import { required, isPhone, length } from '../utils/validate'
+import { required, isPhone, length, minLength, maxLength } from '../utils/validate'
+import { PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, CAPTCHA_LENGTH } from '../config/limit-length'
+import { setStorage } from '../utils'
+import { CONTEXT_KEY } from '../config'
 import { AppDialog, AppDivider } from '.'
 
 @Component({
@@ -79,6 +82,7 @@ export default class AppDialogLoginComp extends Vue {
   @Mutation('SET_LOGIN_SMS_PANEL', { namespace: 'context' }) SET_LOGIN_SMS_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
   @Mutation('SET_RETRIEVE_PANEL', { namespace: 'context' }) SET_RETRIEVE_PANEL: Function
+  @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
 
   @Watch('dialogPanel')
   dialogPanelWatch (val: boolean) {
@@ -121,11 +125,13 @@ export default class AppDialogLoginComp extends Vue {
       isPhone('请提供正确的手机号')
     ],
     password: [
-      required('请提供登录密码')
+      required('请提供登录密码'),
+      minLength(PASSWORD_MIN_LENGTH, `密码长度不可小于${PASSWORD_MIN_LENGTH}位`),
+      maxLength(PASSWORD_MAX_LENGTH, `密码长度不可大于${PASSWORD_MAX_LENGTH}位`)
     ],
     captcha: [
       required('请提供验证码'),
-      length(4, '请提供正确的4位验证码')
+      length(CAPTCHA_LENGTH, `请提供正确的${CAPTCHA_LENGTH}位验证码`)
     ]
   }
 
@@ -150,12 +156,13 @@ export default class AppDialogLoginComp extends Vue {
     const validate = this.loginRef.validate()
     if (!validate) { return }
     this.submitStatus = true
-    // FIXME:
-    const [err, userInfo] = await asyncTask(this.$api.captcha())
+    const [err, userInfo] = await asyncTask(this.$api.login(this.loginForm))
+    this.submitStatus = false
     if (err) { return }
     this.$msg.globalSuccess('登录成功')
-    this.submitStatus = false
-    console.log(userInfo)
+    setStorage(CONTEXT_KEY, userInfo)
+    this.SET_USER_INFO(userInfo)
+    this.close()
   }
 
   async getCaptcha () {

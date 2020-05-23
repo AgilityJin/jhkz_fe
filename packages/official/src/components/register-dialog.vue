@@ -43,8 +43,8 @@
       <span class="pointer" @click="switchPanel('password')">密码登录</span>
       &ensp;|&ensp;
       <span class="pointer" @click="switchPanel('sms')">短信登录</span>
-      &ensp;|&ensp;
-      <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span>
+      <!-- &ensp;|&ensp;
+      <span class="pointer" @click="switchPanel('retrieve')">忘记密码</span> -->
     </div>
   </app-dialog>
 </template>

@@ -186,6 +186,7 @@ export default class ScreenshotManager extends Vue {
   }
 
   async uploadImage (file: any) {
+    if (!file) { return }
     const formData = new FormData()
     formData.append('file', file)
     formData.append('userId', this.userInfo.userId)

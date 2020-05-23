@@ -16,7 +16,6 @@ export const Api = new Request<typeof Svc>({
   requestList: Svc,
   requestInterceptor: (config) => {
     const userInfo = getStorage(CONTEXT_KEY)
-    config.headers.merchantId = userInfo && userInfo.merchantId
     if (userInfo && config.headers && !config.headers.Authorization) {
       config.headers.Authorization = `bearer ${userInfo.token}`
     }

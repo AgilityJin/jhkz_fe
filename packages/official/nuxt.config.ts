@@ -1,4 +1,5 @@
 import { Configuration } from '@nuxt/types'
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
 require('dotenv').config() // 使server端也可以访问
 
 const NuxtConfig: Configuration = {
@@ -29,7 +30,8 @@ const NuxtConfig: Configuration = {
     '~/plugins/message.plugin.ts',
     '~/plugins/directives.plugin.ts',
     '~/plugins/filters.plugin.ts',
-    '~/plugins/components.plugin.ts'
+    '~/plugins/components.plugin.ts',
+    '~/plugins/element-ui.plugin.ts'
   ],
   // SSR need active
   generate: {
@@ -59,6 +61,9 @@ const NuxtConfig: Configuration = {
       if (config.resolve) {
         config.resolve.symlinks = false
       }
+      if (config.plugins) {
+        config.plugins.push(new LodashModuleReplacementPlugin())
+      }
     },
     babel: {
       // 按需加载配置
@@ -69,7 +74,8 @@ const NuxtConfig: Configuration = {
             libraryName: 'element-ui',
             styleLibraryName: 'theme-chalk'
           }
-        ]
+        ],
+        'lodash'
       ]
     }
   },

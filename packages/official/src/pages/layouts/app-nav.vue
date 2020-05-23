@@ -53,7 +53,7 @@
             >
               <v-list-item-title>个人设置</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item @click="quitLogin">
               <v-list-item-title>退出登录</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -72,6 +72,8 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiMagnify, mdiAccountOutline } from '@mdi/js'
 import { Mutation, Getter } from 'vuex-class'
+import { setStorage } from '../../utils'
+import { CONTEXT_KEY } from '../../config'
 
 @Component({
   name: 'app-nav'
@@ -83,6 +85,13 @@ export default class AppNav extends Vue {
   @Getter('userInfo', { namespace: 'context' }) userInfo: any
   @Mutation('SET_LOGIN_PANEL', { namespace: 'context' }) SET_LOGIN_PANEL: Function
   @Mutation('SET_REGISTER_PANEL', { namespace: 'context' }) SET_REGISTER_PANEL: Function
+  @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
+
+  quitLogin () {
+    setStorage(CONTEXT_KEY, null)
+    this.SET_USER_INFO(null)
+    this.$router.push({ path: '/' })
+  }
 
   openPanel (type: 'password' | 'register') {
     switch (type) {

@@ -1,5 +1,5 @@
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
-import { getStorage } from '~/utils'
+import { getStorage, setStorage } from '~/utils'
 import { CONTEXT_KEY } from '~/config'
 
 export const state = () => ({
@@ -21,7 +21,6 @@ export const getters: GetterTree<CurrentState, CurrentState> = {
   userInfo: (state) => {
     if (state.userInfo) { return state.userInfo }
     const context = getStorage(CONTEXT_KEY)
-    console.log(context)
     if (context) { return context }
     return null
   }
@@ -45,6 +44,7 @@ export const mutations: MutationTree<CurrentState> = {
   },
   SET_USER_INFO: (state, userInfo: any) => {
     state.userInfo = userInfo
+    setStorage(CONTEXT_KEY, userInfo)
   }
 }
 
