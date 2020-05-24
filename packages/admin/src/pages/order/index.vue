@@ -376,7 +376,7 @@ export default class OrderPage extends Vue {
     sortable: false
   }, {
     text: '联系手机',
-    value: 'phone',
+    value: 'customer.phone',
     align: 'center',
     sortable: false
   }, {
@@ -589,7 +589,7 @@ export default class OrderPage extends Vue {
   openOrderPanel (type: 'add' | 'edit', item?: any) {
     if (type === 'edit') {
       this.currentForm.account = item.account
-      this.currentForm.phone = item.phone
+      this.currentForm.phone = item.customer && item.customer.phone
       this.currentForm.password = item.password
       this.currentForm.roleName = item.roleName
       this.currentForm.roleArea = item.roleArea
