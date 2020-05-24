@@ -139,11 +139,10 @@ export default class AppDialogRetrieveComp extends Vue {
     if (!validate) { return }
     this.submitStatus = true
     // FIXME:
-    const [err, userInfo] = await asyncTask(this.$api.captcha())
+    const [err] = await asyncTask(this.$api.captcha())
     if (err) { return }
     this.$msg.globalSuccess('登录成功')
     this.submitStatus = false
-    console.log(userInfo)
   }
 
   async getCaptcha () {
