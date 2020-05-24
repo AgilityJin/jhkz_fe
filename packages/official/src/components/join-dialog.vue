@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Vue, Component, Model, Watch, Emit } from 'vue-property-decorator'
+import { Action } from 'vuex-class'
 import { AppDialog } from '.'
 import { CUSTOMER_SERVICE_QQ } from '~/config'
 import { openQqChat } from '~/utils'
@@ -48,11 +49,16 @@ export default class AppDialogRegisterComp extends Vue {
   @Emit()
   close () {}
 
+  @Action('recordUvPv', { namespace: 'context' }) recordUvPv: Function
+
   dialogPanel = false
   CUSTOMER_SERVICE_QQ = CUSTOMER_SERVICE_QQ
 
   openChat (qq: number | string) {
     openQqChat(qq)
+    this.recordUvPv({
+      target: qq
+    })
   }
 }
 </script>

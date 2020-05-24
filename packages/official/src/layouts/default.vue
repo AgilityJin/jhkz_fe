@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Getter, Mutation } from 'vuex-class'
+import { Getter, Mutation, Action } from 'vuex-class'
 import { getStorage, clearStorage } from '../utils'
 import { CONTEXT_KEY } from '../config'
 import AppNav from '~/pages/layouts/app-nav.vue'
@@ -51,6 +51,8 @@ export default class DefaultLayout extends Vue {
   @Mutation('SET_JOIN_PANEL', { namespace: 'context' }) SET_JOIN_PANEL: Function
   @Mutation('SET_USER_INFO', { namespace: 'context' }) SET_USER_INFO: Function
 
+  @Action('recordUvPv', { namespace: 'context' }) recordUvPv: Function
+
   authInit () {
     const ctx = this.userInfo || getStorage(CONTEXT_KEY)
     if (!ctx) { return }
@@ -62,6 +64,9 @@ export default class DefaultLayout extends Vue {
 
   created () {
     this.authInit()
+    this.recordUvPv({
+      type: 'pv'
+    })
     // Temporary until it gets fixed
     this.$vuetify.theme.themes.light.primary = '#C30D23'
     this.$vuetify.theme.applyVueMeta23()

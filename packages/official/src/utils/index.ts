@@ -1,3 +1,4 @@
+import Fingerprint2, { Options } from 'fingerprintjs2'
 import { OSReg } from './regular'
 
 export const getStorage = (key: string, isNeedParse = true) => {
@@ -13,14 +14,34 @@ export const setStorage = (key: string, data: any, isNeedStringify = true) => {
 
 export const clearStorage = (key: string) => localStorage.removeItem(key)
 
-// handle table page
-// export const totalPage = (totalCount: number, pagesize: number) => {
-//   if (totalCount % pagesize === 0) {
-//     return parseInt(String(totalCount / pagesize), 10)
-//   } else {
-//     return parseInt(String(totalCount / pagesize + 1), 10)
-//   }
-// }
+export function genFingerprint (domain?: Record<string, string>): Promise<string> {
+  const options: Options = (domain && {
+    extraComponents: Object.entries(domain).map(([key, val]) => {
+      return {
+        key: `jhkz-${key}`,
+        getData: done => done(val)
+      }
+    })
+  }) || {}
+  return new Promise((resolve) => {
+    const handler = (components: Array<{ key: string; value: any; }>) => {
+      const values = components.map(el => el.value)
+      const deviceId = Fingerprint2.x64hash128(values.join(''), 31)
+      resolve(deviceId) // an array of components: {key: ..., value: ...}
+    }
+    // @ts-ignore
+    if (window.requestIdleCallback) {
+      // @ts-ignore
+      window.requestIdleCallback(function () {
+        Fingerprint2.get(options, handler)
+      })
+    } else {
+      setTimeout(function () {
+        Fingerprint2.get(options, handler)
+      }, 500)
+    }
+  })
+}
 
 /**
  * @name 获取当前系统环境

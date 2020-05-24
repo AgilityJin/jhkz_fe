@@ -1607,6 +1607,11 @@
   dependencies:
     "@types/webpack" "*"
 
+"@types/fingerprintjs2@^2.0.0":
+  version "2.0.0"
+  resolved "http://120.55.82.162:8081/repository/linkedcare-npm/@types/fingerprintjs2/-/fingerprintjs2-2.0.0.tgz#3af76e165416fa75261bbce4393f5445fca4cadd"
+  integrity sha1-OvduFlQW+nUmG7zkOT9URfykyt0=
+
 "@types/glob@^7.1.1":
   version "7.1.1"
   resolved "http://120.55.82.162:8081/repository/linkedcare-npm/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
@@ -4948,6 +4953,11 @@ findup-sync@^3.0.0:
     is-glob "^4.0.0"
     micromatch "^3.0.4"
     resolve-dir "^1.0.1"
+
+fingerprintjs2@^2.1.0:
+  version "2.1.0"
+  resolved "http://120.55.82.162:8081/repository/linkedcare-npm/fingerprintjs2/-/fingerprintjs2-2.1.0.tgz#21dc3fee27d3b199056ef8eb873debccd8e06323"
+  integrity sha1-Idw/7ifTsZkFbvjrhz3rzNjgYyM=
 
 flat-cache@^2.0.1:
   version "2.0.1"

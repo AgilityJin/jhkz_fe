@@ -15,7 +15,7 @@ const AuthMiddleware: Middleware = ({ store, redirect }) => {
       userInfo = store.state.context.userInfo
     } else {
       Msg.globalError('请先登录')
-      store.commit('context/SET_LOGIN_SMS_PANEL', true)
+      store.commit('context/SET_LOGIN_PANEL', true)
       return redirect('/')
     }
   }
@@ -25,6 +25,7 @@ const AuthMiddleware: Middleware = ({ store, redirect }) => {
     store.commit('context/SET_USER_INFO', null)
     clearStorage(CONTEXT_KEY)
     Msg.globalError('用户登录信息已过期')
+    store.commit('context/SET_LOGIN_PANEL', true)
     return redirect('/')
   }
 }

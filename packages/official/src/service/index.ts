@@ -47,3 +47,8 @@ export const queryOrders = {
   url: '/order',
   method: 'get'
 }
+
+export const uvpv = {
+  url: '/uvpv',
+  method: 'post'
+}

@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Action } from 'vuex-class'
 import { CUSTOMER_SERVICE_QQ, APPEARANCE_CONSIGNMENT_QQ, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL } from '~/config'
 import { openQqChat } from '~/utils'
 
@@ -27,51 +28,77 @@ export default class HomeServicesComp extends Vue {
       name: 'PVP日常代练',
       callback: () => {
         this.openChat(CUSTOMER_SERVICE_QQ)
+        this.recordUvPv({
+          target: CUSTOMER_SERVICE_QQ
+        })
       }
     },
     {
       name: 'PVE日常代练',
       callback: () => {
         this.openChat(CUSTOMER_SERVICE_QQ)
+        this.recordUvPv({
+          target: CUSTOMER_SERVICE_QQ
+        })
       }
     },
     {
       name: '竞技场代练',
       callback: () => {
         this.openChat(CUSTOMER_SERVICE_QQ)
+        this.recordUvPv({
+          target: CUSTOMER_SERVICE_QQ
+        })
       }
     },
     {
       name: '资历代练',
       callback: () => {
         this.openChat(CUSTOMER_SERVICE_QQ)
+        this.recordUvPv({
+          target: CUSTOMER_SERVICE_QQ
+        })
       }
     },
     {
       name: '金币售卖',
       callback: () => {
         this.openUrl(GOLD_CONSIGNMENT_URL)
+        this.recordUvPv({
+          target: GOLD_CONSIGNMENT_URL
+        })
       }
     },
     {
       name: '账号代售',
       callback: () => {
         this.openUrl(ACCOUNT_CONSIGNMENT_URL)
+        this.recordUvPv({
+          target: ACCOUNT_CONSIGNMENT_URL
+        })
       }
     },
     {
       name: '外观代售',
       callback: () => {
         this.openChat(APPEARANCE_CONSIGNMENT_QQ)
+        this.recordUvPv({
+          target: APPEARANCE_CONSIGNMENT_QQ
+        })
       }
     },
     {
       name: '外观代抢',
       callback: () => {
         this.openChat(CUSTOMER_SERVICE_QQ)
+        this.recordUvPv({
+          target: CUSTOMER_SERVICE_QQ
+        })
       }
     }
   ]
+
+  @Action('recordUvPv', { namespace: 'context' }) recordUvPv: Function
 
   openUrl (url: string) {
     window.open(url, 'blank')

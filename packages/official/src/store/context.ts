@@ -1,6 +1,7 @@
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
-import { getStorage, setStorage } from '~/utils'
+import { getStorage, setStorage, genFingerprint } from '~/utils'
 import { CONTEXT_KEY } from '~/config'
+import { Api } from '~/plugins/api.plugin'
 
 export const state = () => ({
   loginPanel: false,
@@ -48,4 +49,18 @@ export const mutations: MutationTree<CurrentState> = {
   }
 }
 
-export const actions: ActionTree<CurrentState, CurrentState> = {}
+export const actions: ActionTree<CurrentState, CurrentState> = {
+  async recordUvPv ({ getters }, { type, target }: { type: 'pv' | 'uv', target?: string }) {
+    const fingerprint = await genFingerprint()
+    const params: any = {
+      type: type || 'uv',
+      fingerprint,
+      host: window.location.host,
+      location: window.location.pathname
+    }
+    if (target) { params.target = target }
+    if (getters.userInfo && getters.userInfo.uuid) { params.customerUuid = getters.userInfo.uuid }
+    // @ts-ignore
+    await Api.uvpv(params)
+  }
+}

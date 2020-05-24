@@ -103,11 +103,11 @@ const NuxtConfig: Configuration = {
   },
   // https://github.com/chimurai/http-proxy-middleware#options
   proxy: {
-    '/api': {
+    '/api/admin': {
       // target: 'https://jianghukezhan.vip',
       target: 'http://localhost:8080',
       pathRewrite: {
-        '^/api': '/' // 需要rewrite的, 路径重写
+        '^/api/admin': '/' // 需要rewrite的, 路径重写
       }
     }
   }

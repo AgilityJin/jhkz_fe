@@ -68,6 +68,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mdiQqchat } from '@mdi/js'
+import { Action } from 'vuex-class'
 import { CUSTOMER_SERVICE_QQ, ICP, TECHNICAL_SUPPORT_EMAIL, ICP_URL, ACCOUNT_CONSIGNMENT_URL, GOLD_CONSIGNMENT_URL, APPEARANCE_CONSIGNMENT_QQ } from '~/config'
 import { openQqChat } from '~/utils'
 
@@ -84,12 +85,20 @@ export default class AppNav extends Vue {
   GOLD_CONSIGNMENT_URL = GOLD_CONSIGNMENT_URL
   APPEARANCE_CONSIGNMENT_QQ = APPEARANCE_CONSIGNMENT_QQ
 
+  @Action('recordUvPv', { namespace: 'context' }) recordUvPv: Function
+
   openUrl (url: string) {
+    this.recordUvPv({
+      target: url
+    })
     window.open(url, 'blank')
   }
 
   openChat (targetQq: string | number) {
     openQqChat(targetQq)
+    this.recordUvPv({
+      target: targetQq
+    })
   }
 }
 </script>

@@ -50,22 +50,12 @@
         </v-row>
         <v-divider />
         <v-row>
-          <v-col cols="3">
-            <v-card hover height="130px" @click="activeUpload">
-              <v-icon large class="jhkz-screenshot__plus">
-                mdi-plus
-              </v-icon>
-            </v-card>
-          </v-col>
           <v-col v-for="item in screenshotList" :key="item.id" cols="3">
             <v-lazy>
               <v-card class="jhkz-screenshot__card" height="130px">
                 <v-overlay class="jhkz-screenshot__card_actions" absolute>
                   <v-icon @click="openPreview(item.url)">
                     {{ mdiEye }}
-                  </v-icon>
-                  <v-icon @click="deleteImage(item.id)">
-                    {{ mdiTrashCan }}
                   </v-icon>
                 </v-overlay>
                 <v-img height="100%" :src="item.coverImgUrl" />
@@ -75,7 +65,6 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <v-file-input v-show="false" ref="fileInput" accept="image/*" label="截图上传" @change="fileChange" />
     <preview-images v-model="previewPanel" :images="previewList" @close="closePreview" />
   </v-dialog>
 </template>
@@ -85,12 +74,12 @@ import { Component, Vue, Model, Watch, Emit, Prop, Ref } from 'vue-property-deco
 import { mdiCalendarRange, mdiEye, mdiTrashCan } from '@mdi/js'
 import { format } from 'date-fns'
 import { Getter } from 'vuex-class'
-import PreviewImages from '../preview-images/index.vue'
+import PreviewImages from './base/preview-images.vue'
 
 @Component({
   name: 'screenshot-manager',
   components: {
-    [PreviewImages.options.name]: PreviewImages
+    PreviewImages
   }
 })
 export default class ScreenshotManager extends Vue {
@@ -120,8 +109,6 @@ export default class ScreenshotManager extends Vue {
   }
 
   @Getter('userInfo', { namespace: 'context' }) userInfo: Record<string, any>
-
-  @Ref('fileInput') readonly fileInput: any
 
   @Watch('dates')
   datesWatch (val: [string] | [string, string]) {
@@ -169,16 +156,6 @@ export default class ScreenshotManager extends Vue {
     this.queryImages()
   }
 
-  async deleteImage (id: string) {
-    this.uploadLoading = true
-    await this.$api.removeOrder(undefined, {
-      payload: `/${this.orderId}/images/${id}`
-    })
-    this.uploadLoading = false
-    this.$msg.success('删除订单截图成功')
-    this.queryImages()
-  }
-
   closePreview () {
     this.previewList = []
   }
@@ -190,37 +167,12 @@ export default class ScreenshotManager extends Vue {
 
   async queryImages () {
     const filterDate = this.formatDates(this.dates)
-    this.screenshotList = await this.$api.getOrders({
+    this.screenshotList = await this.$api.queryOrders({
       startTime: filterDate.start,
       endTime: filterDate.end
     }, {
       payload: `/${this.orderId}/images`
     })
-  }
-
-  async uploadImage (file: any) {
-    if (!file) { return }
-    const formData = new FormData()
-    formData.append('file', file)
-    formData.append('userId', this.userInfo.userId)
-    this.uploadLoading = true
-    await this.$api.createOrder(formData, {
-      payload: `/${this.orderId}/images`,
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    this.uploadLoading = false
-    this.$msg.success('图片上传成功')
-    this.queryImages()
-  }
-
-  fileChange (file: any) {
-    this.uploadImage(file)
-  }
-
-  activeUpload () {
-    this.fileInput.$refs.input.click()
   }
 
   formatDates (dates: [string] | [string, string] | any[] | null | undefined) {
@@ -259,14 +211,6 @@ export default class ScreenshotManager extends Vue {
   +element(order-id) {
     font-size: 16px;
     line-height: 70px;
-  }
-  +element(plus) {
-    position absolute
-    margin auto
-    top 0
-    bottom 0
-    left 0
-    right 0
   }
   +element(card) {
     +modifier(actions) {

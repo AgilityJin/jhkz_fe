@@ -137,6 +137,7 @@
       </template>
     </v-data-table>
     <app-pagination :page.sync="pager.page" :size.sync="pager.size" :total-page="pager.totalPage" @pageChange="pageChange" @sizeChange="sizeChange" />
+    <screenshot-manager v-model="screenshotManagerPanel" :order-id="screenshotManagerOrderId" />
   </div>
 </template>
 
@@ -149,10 +150,12 @@ import { length, isPhone, required } from '../../utils/validate'
 import { ORDER_LENGTH } from '../../config/limit-length'
 import { AppPagination } from '~/components'
 import { ORDER_STATUS_MAP, ORDER_STATUS } from '~/config'
+import ScreenshotManager from '~/components/screenshot-manager.vue'
 
 @Component({
   components: {
-    AppPagination
+    AppPagination,
+    ScreenshotManager
   }
 })
 export default class MyOrderPage extends Vue {
@@ -165,6 +168,8 @@ export default class MyOrderPage extends Vue {
   ORDER_STATUS = ORDER_STATUS
   ORDER_STATUS_MAP = ORDER_STATUS_MAP
   tableData = []
+  screenshotManagerPanel = false
+  screenshotManagerOrderId = ''
   queryForm = {
     orderId: '', // 精确
     account: '', // 精确
@@ -259,7 +264,10 @@ export default class MyOrderPage extends Vue {
     this.getOrders()
   }
 
-  openScreenshotManagerPanel () {}
+  openScreenshotManagerPanel ({ orderId }: any) {
+    this.screenshotManagerOrderId = orderId
+    this.screenshotManagerPanel = true
+  }
 
   queryOrders () {
     const validate = this.queryOrdersRef.validate()
