@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.3...@jhkz/official@1.2.4) (2020-05-24)
+
+
+### Features
+
+* **all:** 增加鉴权中间件 & 弹窗添加 ([a34662d](https://github.com/AgilityJin/jhkz_fe/commit/a34662da38daff76a7325b129fd3afc7cc18f8c2))
+* **all:** pub ([fbb27db](https://github.com/AgilityJin/jhkz_fe/commit/fbb27db4ec152b8cc565d14a6b87fec55ecb3490))
+* **login:** 提供短信登录能力 ([8a755df](https://github.com/AgilityJin/jhkz_fe/commit/8a755dff16ac13886e6358eef181bdb2f0343679))
+* **login dialog:** 新增密码及短信登录弹窗 ([5262fdc](https://github.com/AgilityJin/jhkz_fe/commit/5262fdcaf089ea4a2cace4841022780c0a32394b))
+* **official:** add myorder & user ([037a46b](https://github.com/AgilityJin/jhkz_fe/commit/037a46b2ac76586b646e86588f1242cd78c57944))
+* **register:** 对接用户注册 ([e004cbf](https://github.com/AgilityJin/jhkz_fe/commit/e004cbf133c23e2e780fd67892de01dc954336b6))
+
+
+### Performance Improvements
+
+* **dialog:** 保存弹窗修改进度 ([a053149](https://github.com/AgilityJin/jhkz_fe/commit/a053149e2ba4077a729eb35457d692008af8c0d3))
+* **save:** save change ([d763da7](https://github.com/AgilityJin/jhkz_fe/commit/d763da7963f45f2c1971e2a0dbe3b042a2eef584))
+
+
+
+
+
 ## [1.2.3](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.2...@jhkz/official@1.2.3) (2020-05-05)
 
 

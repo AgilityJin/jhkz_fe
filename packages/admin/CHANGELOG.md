@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.4.1...@jhkz/admin@1.4.2) (2020-05-24)
+
+
+### Features
+
+* **all:** pub ([fbb27db](https://github.com/AgilityJin/jhkz_fe/commit/fbb27db4ec152b8cc565d14a6b87fec55ecb3490))
+* **login dialog:** 新增密码及短信登录弹窗 ([5262fdc](https://github.com/AgilityJin/jhkz_fe/commit/5262fdcaf089ea4a2cace4841022780c0a32394b))
+* **official:** add myorder & user ([037a46b](https://github.com/AgilityJin/jhkz_fe/commit/037a46b2ac76586b646e86588f1242cd78c57944))
+* **register:** 对接用户注册 ([e004cbf](https://github.com/AgilityJin/jhkz_fe/commit/e004cbf133c23e2e780fd67892de01dc954336b6))
+
+
+
+
+
 ## [1.4.1](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/admin@1.4.0...@jhkz/admin@1.4.1) (2020-05-05)
 
 
