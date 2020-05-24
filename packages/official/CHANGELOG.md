@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.4...@jhkz/official@1.2.5) (2020-05-24)
+
+
+### Bug Fixes
+
+* **official:** remove console ([a7e0595](https://github.com/AgilityJin/jhkz_fe/commit/a7e059531887fd38d6d025c9cc33fc2bb96ffd7a))
+
+
+
+
+
 ## [1.2.4](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.3...@jhkz/official@1.2.4) (2020-05-24)
 
 
