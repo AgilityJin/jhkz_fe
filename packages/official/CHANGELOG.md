@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.5...@jhkz/official@1.2.6) (2020-06-06)
+
+
+### Bug Fixes
+
+* 订单手机号码设为非必填项 ([8f3565b](https://github.com/AgilityJin/jhkz_fe/commit/8f3565b4d0079c0736b7aa12e955b7c4be28f8e4))
+
+
+
+
+
+
 ## [1.2.5](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.4...@jhkz/official@1.2.5) (2020-05-24)
 
 
