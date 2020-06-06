@@ -182,7 +182,7 @@
           <v-container>
             <v-form ref="order" :model="orderValid">
               <v-text-field v-model="currentForm.account" :rules="rules.account" autofocus label="*账号" />
-              <v-text-field v-model="currentForm.phone" :rules="rules.formPhone" label="*联系手机" />
+              <v-text-field v-model="currentForm.phone" :rules="rules.formPhone" label="联系手机" />
               <v-row dense>
                 <v-col cols="6">
                   <v-text-field v-model="currentForm.password" type="password" label="账号密码" />
@@ -479,7 +479,7 @@ export default class OrderPage extends Vue {
       required('请提供账号')
     ],
     formPhone: [
-      required('请提供联系手机'),
+      // required('请提供联系手机'),
       isPhone('请填写正确的手机号')
     ],
     gameCategoryId: [

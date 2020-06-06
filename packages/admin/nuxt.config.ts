@@ -105,7 +105,8 @@ const NuxtConfig: Configuration = {
   proxy: {
     '/api/admin': {
       // target: 'https://jianghukezhan.vip',
-      target: 'http://localhost:8080',
+      // target: 'http://localhost:8080',
+      target: 'http://192.168.1.9:8080',
       pathRewrite: {
         '^/api/admin': '/' // 需要rewrite的, 路径重写
       }

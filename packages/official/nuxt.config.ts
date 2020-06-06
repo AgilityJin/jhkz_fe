@@ -110,7 +110,8 @@ const NuxtConfig: Configuration = {
   },
   proxy: {
     '/api/official': {
-      target: 'http://localhost:8081',
+      target: 'http://192.168.1.9:8081',
+      // target: 'http://localhost:8081',
       // target: 'https://jianghukezhan.vip',
       pathRewrite: {
         '^/api/official': '/' // 需要rewrite的, 路径重写
