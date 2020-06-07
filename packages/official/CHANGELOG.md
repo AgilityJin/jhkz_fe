@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.7](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.6...@jhkz/official@1.2.7) (2020-06-07)
+
+
+### Bug Fixes
+
+* **context:** add platform ([e2926a6](https://github.com/AgilityJin/jhkz_fe/commit/e2926a61d66e7451619b8b9e07288cbe90bb1264))
+
+
+
+
+
 ## [1.2.6](https://github.com/AgilityJin/jhkz_fe/compare/@jhkz/official@1.2.5...@jhkz/official@1.2.6) (2020-06-06)
 
 
