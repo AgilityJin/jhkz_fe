@@ -60,7 +60,7 @@
     "lodash": "^4.17.15",
     "minireset.css": "^0.0.6",
     "nanoid": "^3.0.0",
-    "nuxt": "^2.11.0",
+    "nuxt": "^3.4.3",
     "vue-property-decorator": "^8.4.0",
     "vuex-class": "^0.3.2"
   }
